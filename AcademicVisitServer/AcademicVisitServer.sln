@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicVisitServer", "AcademicVisitServer\AcademicVisitServer.csproj", "{FF20DBD8-E3BB-487A-831B-408002FC8392}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D59E19BA-AB8A-447D-953B-6C31AF0775A4}
+	EndGlobalSection
+EndGlobal
