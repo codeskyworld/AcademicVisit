@@ -36,3 +36,5 @@
 /AcademicVisitServer/AcademicVisitServer/obj/project.assets.json
 /AcademicVisitServer/AcademicVisitServer/obj/project.nuget.cache
 /AcademicVisitServer/AcademicVisitServer/obj/staticwebassets.pack.sentinel
+/AcademicVisitServer/.vs/AcademicVisitServer/DesignTimeBuild/.dtbcache.v2
+/AcademicVisitUI/package-lock.json
