@@ -1,0 +1,17 @@
+
+// GOAL
+https://site.sciping.com/
+
+
+
+// Focus on SASS
+
+https://www.youtube.com/watch?v=0w0Q0y31qSg&t=163s
+
+https://www.mugo.ca/Blog/7-benefits-of-using-SASS-over-conventional-CSS
+
+https://getbootstrap.com/docs/5.2/getting-started/download/#package-managers
+
+https://www.w3schools.com/sass/sass_variables.php
+
+https://parceljs.org/languages/sass/
