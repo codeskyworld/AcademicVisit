@@ -27,7 +27,7 @@ const Form = () => {
                     </div>
                     <div className="mt-3">
                       <input
-                        class="form-control"
+                        className="form-control"
                         id="email"
                         name="email"
                         placeholder="Your email.."
@@ -36,7 +36,7 @@ const Form = () => {
                     </div>
                     <div className="d-grid mt-4">
                       <button
-                        class="btn btn-primary btn-lg"
+                        className="btn btn-primary btn-lg"
                         type="submit"
                         value="Send Now"
                       >
@@ -45,7 +45,7 @@ const Form = () => {
                           width="27"
                           height="27"
                           fill="currentColor"
-                          class="bi bi-mailbox2"
+                          className="bi bi-mailbox2"
                           viewBox="0 0 16 16"
                         >
                           <path d="M9 8.5h2.793l.853.854A.5.5 0 0 0 13 9.5h1a.5.5 0 0 0 .5-.5V8a.5.5 0 0 0-.5-.5H9v1z" />
