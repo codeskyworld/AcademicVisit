@@ -4,7 +4,7 @@ const Form = () => {
     <section>
       <div className="container">
         <div className="row">
-          <div className="col-lg-7 offset-lg-2 g-0 mx-auto">
+          <div className="col-lg-9 offset-lg-2 g-0 mx-auto">
             <div className="fill-form form-box">
               <div className="row g-0">
                 <div className="col-xl-6 col-lg-12 d-md-none d-sm-none d-xs-none d-lg-block form-box__img">
