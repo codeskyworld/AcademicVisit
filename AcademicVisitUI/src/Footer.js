@@ -1,9 +1,16 @@
 import React from "react";
 const Footer = () => {
   return (
-    <footer className="d-block">
-      <p className="text-center"> ©Copyright 2021 Lead Capture Page </p>{" "}
-    </footer>
+    <div className="container">
+      <footer className="d-block">
+        <br></br>
+        <br></br>
+        <p className="text-center">
+          ©Copyright 2021 Academic Web Navigation Web Page{" "}
+        </p>{" "}
+      </footer>
+      <br></br>
+    </div>
   );
 };
 export default Footer;
