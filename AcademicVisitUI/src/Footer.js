@@ -1,7 +1,7 @@
 import React from "react";
 const Footer = () => {
   return (
-    <div className="container">
+    <div className="container-fluid sticky-bottom">
       <footer className="d-block">
         <br></br>
         <br></br>

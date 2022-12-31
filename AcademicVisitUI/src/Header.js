@@ -1,7 +1,7 @@
 import React from "react";
 const Header = () => {
   return (
-    <div className="container">
+    <div className="container-fluid sticky-top bg-dark">
       <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <a
           href="/"
@@ -20,22 +20,37 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <a href="#" className="nav-link px-2 link-secondary">
               Research
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <a href="#" className="nav-link px-2 link-secondary">
               Agency
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <a href="#" className="nav-link px-2 link-secondary">
               FAQs
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-dark">
+            <a href="#" className="nav-link px-2 link-secondary">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link px-2 link-secondary">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link px-2 link-secondary">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link px-2 link-secondary">
               About
             </a>
           </li>
