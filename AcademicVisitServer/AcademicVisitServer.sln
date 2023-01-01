@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicVisitServer", "AcademicVisitServer\AcademicVisitServer.csproj", "{FF20DBD8-E3BB-487A-831B-408002FC8392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcademicVisitServer", "AcademicVisitServer\AcademicVisitServer.csproj", "{FF20DBD8-E3BB-487A-831B-408002FC8392}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicVisit.Data", "AcademicVisit.Data\AcademicVisit.Data.csproj", "{82369ED9-5C12-4555-A72C-1BDF86591A5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF20DBD8-E3BB-487A-831B-408002FC8392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82369ED9-5C12-4555-A72C-1BDF86591A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82369ED9-5C12-4555-A72C-1BDF86591A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82369ED9-5C12-4555-A72C-1BDF86591A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82369ED9-5C12-4555-A72C-1BDF86591A5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
