@@ -1,4 +1,5 @@
 import React from "react";
+
 const Footer = () => {
   return (
     <div className="container-fluid sticky-bottom">
@@ -6,7 +7,7 @@ const Footer = () => {
         <br></br>
         <br></br>
         <p className="text-center">
-          ©Copyright 2021 Academic Web Navigation Web Page{" "}
+          ©Copyright 2023 Academic Web Navigation Web Page{" "}
         </p>{" "}
       </footer>
       <br></br>

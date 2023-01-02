@@ -96,3 +96,8 @@
 /AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/System.CodeDom.dll
 /AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/System.Text.Encodings.Web.dll
 /AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/System.Text.Json.dll
+/AcademicVisitServer/AcademicVisit.Data/obj/Debug/net6.0/AcademicVisit.Data.csproj.BuildWithSkipAnalyzers
+/AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll
+/AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
+/AcademicVisitServer/AcademicVisitServer/bin/Debug/net6.0/Newtonsoft.Json.dll
