@@ -6,7 +6,7 @@ namespace AcademicVisit.Data
     {
         public int Id { get; set; }
         [Required]
-        public string? LinkName { get; set; } 
+        public string? LinkName { get; set; }
         [Required]
         public string? LinkAddress { get; set; }
         [Required]

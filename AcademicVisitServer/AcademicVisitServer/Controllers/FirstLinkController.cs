@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AcademicVisit.Data;
+using AcademicVisitServer.DataProcess;
 
 namespace AcademicVisitServer.Controllers
 {
@@ -21,28 +22,15 @@ namespace AcademicVisitServer.Controllers
 
 
             FirstLinkInfo firstLinkInfoReceived = firstLinkInfo;
-
+            DBProcess.AddLink(firstLinkInfoReceived, dataContext);
         }
 
 
-        public void AddLink(FirstLinkInfo firstLinkInfo)
+        [HttpGet]
+        public JsonResult GetLink()
         {
 
-                List<FirstLinkInfo> firstLinklist = new List<FirstLinkInfo>();
-
-
-            firstLinklist.Add(new FirstLinkInfo()
-                    {
-                LinkName = firstLinkInfo.LinkName,
-                LinkAddress = firstLinkInfo.LinkAddress,
-                LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(DateTime.Now)
-                    });
-
-                _dbContext.BtcHistory.AddRange(btclist);
-
-                _dbContext.SaveChanges();
-
-
+            return new JsonResult(DBProcess.ReadLink(dataContext));
         }
     }
 }

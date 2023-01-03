@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using AcademicVisit.Data;
-using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
