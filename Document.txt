@@ -47,3 +47,7 @@ https://www.tutorialsteacher.com/webapi/parameter-binding-in-web-api
 https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 https://www.pragimtech.com/blog/blazor/post-in-aspnet-core-rest-api/
 https://www.michalbialecki.com/en/2020/01/10/net-core-pass-parameters-to-actions/
+
+
+
+https://www.freecodecamp.org/news/microservices-and-software-system-design-course/

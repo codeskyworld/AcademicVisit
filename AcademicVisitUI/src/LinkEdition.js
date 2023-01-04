@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import {
   Row,
@@ -10,51 +9,45 @@ import {
   Button,
   Table,
 } from "reactstrap";
+import { AddLink, GetLink } from "./LinkProcess";
+import { Alert, Confirm } from "react-st-modal";
 
 const LinkEdition = () => {
   const [linkName, setLinkName] = useState("");
   const [linkAddress, setLinkAddress] = useState("");
   const [linkList, setLinkList] = useState([]);
 
-  const AddLink = async () => {
-    await axios
-      .post(
-        "http://localhost:5271/FirstLink",
-        {
-          LinkName: linkName,
-          LinkAddress: linkAddress,
-          LinkUpdatingTime: new Date().toJSON(),
-        },
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        if (res.data.success) {
-          console.log("Add link is successfull!");
-          console.log(res);
-        }
-      })
-      .catch((error) => alert("error is " + error));
+  const AddLinkHandler = async () => {
+    if (!linkName || !linkAddress) {
+      Confirm("Сonfirmation text", "Сonfirmation title");
+    } else {
+      AddLink(linkName, linkAddress);
+    }
   };
 
-  const GetLink = async () => {
-    await axios
-      .get("http://localhost:5271/FirstLink")
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("Get link is successfull!");
-          setLinkList(res.data);
-        }
-      })
-      .catch((error) => alert("error is " + error));
+  const GetLinkHandler = async () => {
+    GetLink(setLinkList);
   };
+
+  let linkTableRender;
+
+  linkTableRender = linkList.map((link, index) => {
+    return (
+      <tr key={index}>
+        <th scope="row">{link.id}</th>
+        <td>{link.linkName}</td>
+        <td>{link.linkAddress}</td>
+        <td>{link.linkUpdatingTime}</td>
+        <td>
+          <Button color="success">Edit</Button>&nbsp;&nbsp;
+          <Button color="danger">Delete</Button>
+        </td>
+      </tr>
+    );
+  });
 
   return (
-    <div className="container mt-4 ">
+    <div className="container mt-4 mb-auto">
       <Form className="mb-5">
         <Row>
           <Col md={6}>
@@ -86,32 +79,21 @@ const LinkEdition = () => {
             </FormGroup>
           </Col>
         </Row>
-        <Button onClick={AddLink}>Add</Button>
-        <Button onClick={GetLink}>Get</Button>
+        <Button onClick={AddLinkHandler}>Add</Button>
+        <Button onClick={GetLinkHandler}>Get</Button>
       </Form>
+
       <Table className="mb-5">
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Link Name</th>
+            <th>Link Address</th>
+            <th>Link Updating Time</th>
             <th>Manipulation</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <Button color="success">Edit</Button>&nbsp;&nbsp;
-              <Button color="danger">Delete</Button>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
+        <tbody>{linkTableRender}</tbody>
       </Table>
     </div>
   );

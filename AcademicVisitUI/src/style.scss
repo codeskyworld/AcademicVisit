@@ -1,5 +1,16 @@
-body {
+html,
+body,
+#root {
   font-size: 0.875rem;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .feather {
