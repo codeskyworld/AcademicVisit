@@ -9,7 +9,7 @@ import {
   Button,
   Table,
 } from "reactstrap";
-import { AddLink, GetLink } from "./LinkProcess";
+import { AddLink, GetLink, RemoveLink } from "./LinkProcess";
 import { Alert, Confirm } from "react-st-modal";
 
 const LinkEdition = () => {
@@ -19,14 +19,10 @@ const LinkEdition = () => {
 
   const AddLinkHandler = async () => {
     if (!linkName || !linkAddress) {
-      Confirm("Сonfirmation text", "Сonfirmation title");
+      Alert("Please input Link Name and Link Address", "Warning");
     } else {
       AddLink(linkName, linkAddress);
     }
-  };
-
-  const GetLinkHandler = async () => {
-    GetLink(setLinkList);
   };
 
   let linkTableRender;
@@ -40,7 +36,22 @@ const LinkEdition = () => {
         <td>{link.linkUpdatingTime}</td>
         <td>
           <Button color="success">Edit</Button>&nbsp;&nbsp;
-          <Button color="danger">Delete</Button>
+          <Button
+            color="danger"
+            onClick={async () => {
+              const result = await Confirm(
+                `Are you sure to delete "${link.linkName}" ?`,
+                "Warning"
+              );
+              if (result) {
+                RemoveLink(link.id);
+              } else {
+                console.log("Deleting is canceled");
+              }
+            }}
+          >
+            Delete
+          </Button>
         </td>
       </tr>
     );
@@ -80,7 +91,13 @@ const LinkEdition = () => {
           </Col>
         </Row>
         <Button onClick={AddLinkHandler}>Add</Button>
-        <Button onClick={GetLinkHandler}>Get</Button>
+        <Button
+          onClick={() => {
+            GetLink(setLinkList);
+          }}
+        >
+          Get
+        </Button>
       </Form>
 
       <Table className="mb-5">

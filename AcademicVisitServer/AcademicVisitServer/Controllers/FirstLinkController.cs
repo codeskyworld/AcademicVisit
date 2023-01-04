@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AcademicVisit.Data;
 using AcademicVisitServer.DataProcess;
+using System.Runtime.CompilerServices;
 
 namespace AcademicVisitServer.Controllers
 {
@@ -31,6 +32,12 @@ namespace AcademicVisitServer.Controllers
         {
 
             return new JsonResult(DBProcess.ReadLink(dataContext));
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteLink(int id)
+        {
+            DBProcess.RemoveLink(dataContext, id);
         }
     }
 }

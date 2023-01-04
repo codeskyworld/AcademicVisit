@@ -1,5 +1,6 @@
 ﻿using AcademicVisit.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace AcademicVisitServer.DataProcess
 {
@@ -21,12 +22,25 @@ namespace AcademicVisitServer.DataProcess
             dataContext.FirstLinkInfos.AddRange(firstLinklist);
 
             dataContext.SaveChanges();
+            dataContext.Dispose();
         }
 
         public static List<FirstLinkInfo> ReadLink(DataContext dataContext)
         {
-            return dataContext.FirstLinkInfos.ToList();
+            List <FirstLinkInfo> linklist = new List<FirstLinkInfo>();
+            linklist= dataContext.FirstLinkInfos.ToList();
+            dataContext.Dispose();
+            return linklist;
         }
 
+        public static void RemoveLink(DataContext dataContext, int id)
+        {
+            FirstLinkInfo firstLinkInfo = new FirstLinkInfo() { Id = id };
+            dataContext.FirstLinkInfos.Attach(firstLinkInfo);
+            dataContext.FirstLinkInfos.Remove(firstLinkInfo);
+            dataContext.SaveChanges();
+            dataContext.Dispose();
+        }
     }
+
 }
