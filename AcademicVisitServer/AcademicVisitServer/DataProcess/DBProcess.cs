@@ -27,8 +27,16 @@ namespace AcademicVisitServer.DataProcess
 
         public static List<FirstLinkInfo> ReadLink(DataContext dataContext)
         {
-            List <FirstLinkInfo> linklist = new List<FirstLinkInfo>();
-            linklist= dataContext.FirstLinkInfos.ToList();
+            List<FirstLinkInfo> linklist = new List<FirstLinkInfo>();
+            linklist = dataContext.FirstLinkInfos.ToList();
+            dataContext.Dispose();
+            return linklist;
+        }
+
+        public static List<FirstLinkInfo> ReadOneLink(DataContext dataContext, int id)
+        {
+            List<FirstLinkInfo> linklist = new List<FirstLinkInfo>();
+            linklist = dataContext.FirstLinkInfos.Where(x => x.Id == id).ToList();
             dataContext.Dispose();
             return linklist;
         }

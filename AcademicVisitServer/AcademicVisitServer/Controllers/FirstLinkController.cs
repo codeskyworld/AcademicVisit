@@ -28,11 +28,20 @@ namespace AcademicVisitServer.Controllers
 
 
         [HttpGet]
+        [Route("GetAllId")]
         public JsonResult GetLink()
         {
 
             return new JsonResult(DBProcess.ReadLink(dataContext));
         }
+
+        [HttpGet]
+        [Route("GetOneId/{id}")]
+        public JsonResult GetEditLink(int id)
+        {
+            return new JsonResult(DBProcess.ReadOneLink(dataContext, id));
+        }
+
 
         [HttpDelete("{id}")]
         public void DeleteLink(int id)

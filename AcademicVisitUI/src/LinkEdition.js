@@ -11,6 +11,8 @@ import {
 } from "reactstrap";
 import { AddLink, GetLink, RemoveLink, GetEditLink } from "./LinkProcess";
 import { Alert, Confirm } from "react-st-modal";
+import { CustomDialog, useDialog } from "react-st-modal";
+import { CustomDialogContent } from "./EditDialog";
 
 const LinkEdition = () => {
   const [linkName, setLinkName] = useState("");
@@ -19,13 +21,14 @@ const LinkEdition = () => {
 
   useEffect(() => {
     GetLink(setLinkList);
-  }, [linkList]);
+  }, [linkName]);
 
   const AddLinkHandler = async () => {
     if (!linkName || !linkAddress) {
       Alert("Please input Link Name and Link Address", "Warning");
     } else {
       AddLink(linkName, linkAddress);
+      window.location.reload(true);
     }
   };
 
@@ -39,7 +42,26 @@ const LinkEdition = () => {
         <td>{link.linkAddress}</td>
         <td>{link.linkUpdatingTime}</td>
         <td>
-          <Button color="success">Edit</Button>&nbsp;&nbsp;
+          <Button
+            color="success"
+            onClick={async () => {
+              await GetEditLink(link.id, setLinkName, setLinkAddress);
+              await CustomDialog(
+                <CustomDialogContent
+                  id={link.id}
+                  name={link.linkName}
+                  address={link.linkAddress}
+                />,
+                {
+                  title: `${link.id}`,
+                  showCloseIcon: true,
+                }
+              );
+            }}
+          >
+            Edit
+          </Button>
+          &nbsp;&nbsp;
           <Button
             color="danger"
             onClick={async () => {
@@ -49,6 +71,7 @@ const LinkEdition = () => {
               );
               if (result) {
                 RemoveLink(link.id);
+                window.location.reload(true);
               } else {
                 console.log("Deleting is canceled");
               }
