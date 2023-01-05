@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Alert } from "react-st-modal";
 
 const AddLink = async (linkName, linkAddress) => {
   await axios
@@ -49,4 +48,16 @@ const RemoveLink = async (id) => {
     .catch((error) => alert("error is " + error));
 };
 
-export { AddLink, GetLink, RemoveLink };
+const GetEditLink = async (id) => {
+  await axios
+    .delete(`http://localhost:5271/FirstLink/${id}`)
+    .then((res) => {
+      if (res.data.success) {
+        console.log("Getting edit-link is successfull!");
+        console.log(res);
+      }
+    })
+    .catch((error) => alert("error is " + error));
+};
+
+export { AddLink, GetLink, RemoveLink, GetEditLink };

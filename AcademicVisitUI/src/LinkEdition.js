@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Row,
   Col,
@@ -9,13 +9,17 @@ import {
   Button,
   Table,
 } from "reactstrap";
-import { AddLink, GetLink, RemoveLink } from "./LinkProcess";
+import { AddLink, GetLink, RemoveLink, GetEditLink } from "./LinkProcess";
 import { Alert, Confirm } from "react-st-modal";
 
 const LinkEdition = () => {
   const [linkName, setLinkName] = useState("");
   const [linkAddress, setLinkAddress] = useState("");
   const [linkList, setLinkList] = useState([]);
+
+  useEffect(() => {
+    GetLink(setLinkList);
+  }, [linkList]);
 
   const AddLinkHandler = async () => {
     if (!linkName || !linkAddress) {
@@ -90,13 +94,14 @@ const LinkEdition = () => {
             </FormGroup>
           </Col>
         </Row>
-        <Button onClick={AddLinkHandler}>Add</Button>
         <Button
           onClick={() => {
-            GetLink(setLinkList);
+            AddLinkHandler();
+            document.getElementById("linkName").value = "";
+            document.getElementById("linkAddress").value = "";
           }}
         >
-          Get
+          Add
         </Button>
       </Form>
 
