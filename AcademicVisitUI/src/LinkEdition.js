@@ -59,7 +59,7 @@ const LinkEdition = () => {
               );
             }}
           >
-            Edit
+            &nbsp;&nbsp;Edit&nbsp;&nbsp;
           </Button>
           &nbsp;&nbsp;
           <Button

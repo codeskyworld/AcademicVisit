@@ -10,7 +10,7 @@ const CustomDialogContent = (props) => {
   return (
     <Form className="EditDialog">
       <Row>
-        <Col md={6}>
+        <Col md={12}>
           <FormGroup>
             <Label for="linkName">Link Name</Label>
             <Input
@@ -24,7 +24,7 @@ const CustomDialogContent = (props) => {
             />
           </FormGroup>
         </Col>
-        <Col md={6}>
+        <Col md={12}>
           <FormGroup>
             <Label for="linkAddress">Link Address</Label>
             <Input
@@ -39,8 +39,17 @@ const CustomDialogContent = (props) => {
           </FormGroup>
         </Col>
       </Row>
-      <Button onClick={() => {}}>
-        {props.id} and {props.name} and {props.address}
+      <Button className="mb-3" color="primary" onClick={() => {}}>
+        Confirm
+      </Button>
+      <Button
+        className="mb-3"
+        color="warning"
+        onClick={() => {
+          window.location.reload(true);
+        }}
+      >
+        &nbsp;Cancel&nbsp;
       </Button>
     </Form>
   );
