@@ -48,5 +48,11 @@ namespace AcademicVisitServer.Controllers
         {
             DBProcess.RemoveLink(dataContext, id);
         }
+
+        [HttpPut]
+        public void EditLink([FromBody] FirstLinkInfo firstLinkInfo)
+        {
+            FirstLinkInfo firstLinkInfoReceived = firstLinkInfo;
+        }
     }
 }

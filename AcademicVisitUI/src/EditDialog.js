@@ -1,11 +1,14 @@
 import { useDialog } from "react-st-modal";
 import React, { useState } from "react";
 import { Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { EditLink } from "./LinkProcess";
+import { Alert } from "react-st-modal";
 
 const CustomDialogContent = (props) => {
   const dialog = useDialog();
 
-  const [value, setValue] = useState();
+  const [linkName, setLinkName] = useState("");
+  const [linkAddress, setLinkAddress] = useState("");
 
   return (
     <Form className="EditDialog">
@@ -15,11 +18,10 @@ const CustomDialogContent = (props) => {
             <Label for="linkName">Link Name</Label>
             <Input
               name="linkName"
-              placeholder="Please input the Link Name"
+              placeholder={props.name}
               type="text"
-              value={props.name}
               onChange={(event) => {
-                setValue(event.target.value);
+                setLinkName(event.target.value);
               }}
             />
           </FormGroup>
@@ -29,24 +31,34 @@ const CustomDialogContent = (props) => {
             <Label for="linkAddress">Link Address</Label>
             <Input
               name="linkAddress"
-              placeholder="Please input the Link Address"
+              placeholder={props.address}
               type="url"
-              value={props.address}
               onChange={(event) => {
-                setValue(event.target.value);
+                setLinkAddress(event.target.value);
               }}
             />
           </FormGroup>
         </Col>
       </Row>
-      <Button className="mb-3" color="primary" onClick={() => {}}>
-        Confirm
-      </Button>
       <Button
         className="mb-3"
         color="warning"
         onClick={() => {
-          window.location.reload(true);
+          if (!linkName || !linkAddress) {
+            Alert("Please input both Link Name and Link Address", "Warning");
+          } else {
+            EditLink(linkName, linkAddress);
+            dialog.close();
+          }
+        }}
+      >
+        Confirm
+      </Button>
+      <Button
+        className="mb-3"
+        color="info"
+        onClick={() => {
+          dialog.close();
         }}
       >
         &nbsp;Cancel&nbsp;

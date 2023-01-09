@@ -22,7 +22,7 @@ const AddLink = async (linkName, linkAddress) => {
         console.log(res);
       }
     })
-    .catch((error) => alert("error is " + error));
+    .catch((error) => alert("Add error is " + error));
 };
 
 const GetLink = async (setLinkList) => {
@@ -33,7 +33,7 @@ const GetLink = async (setLinkList) => {
         setLinkList(res.data);
       }
     })
-    .catch((error) => alert("error is " + error));
+    .catch((error) => alert("Get error is " + error));
 };
 
 const RemoveLink = async (id) => {
@@ -45,7 +45,7 @@ const RemoveLink = async (id) => {
         console.log(res);
       }
     })
-    .catch((error) => alert("error is " + error));
+    .catch((error) => alert("Remove error is " + error));
 };
 
 const GetEditLink = async (id, setLinkName, setLinkAddress) => {
@@ -58,7 +58,23 @@ const GetEditLink = async (id, setLinkName, setLinkAddress) => {
         setLinkAddress(res.data[0].linkAddress);
       }
     })
-    .catch((error) => alert("error from GetEditLink is " + error));
+    .catch((error) => alert("GetEdit error from GetEditLink is " + error));
 };
 
-export { AddLink, GetLink, RemoveLink, GetEditLink };
+const EditLink = async (linkName, linkAddress) => {
+  await axios
+    .put("http://localhost:5271/FirstLink", {
+      LinkName: linkName,
+      LinkAddress: linkAddress,
+      LinkUpdatingTime: new Date().toJSON(),
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Edit link is successfull!");
+        console.log(res);
+      }
+    })
+    .catch((error) => alert("Edit error is " + error));
+};
+
+export { AddLink, GetLink, RemoveLink, GetEditLink, EditLink };

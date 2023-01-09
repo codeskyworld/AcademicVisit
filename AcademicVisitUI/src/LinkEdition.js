@@ -25,7 +25,7 @@ const LinkEdition = () => {
 
   const AddLinkHandler = async () => {
     if (!linkName || !linkAddress) {
-      Alert("Please input Link Name and Link Address", "Warning");
+      Alert("Please input both Link Name and Link Address", "Warning");
     } else {
       AddLink(linkName, linkAddress);
       window.location.reload(true);
