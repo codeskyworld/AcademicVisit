@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { AddLink, GetLink, RemoveLink, GetEditLink } from "./LinkProcess";
 import { Alert, Confirm } from "react-st-modal";
-import { CustomDialog, useDialog } from "react-st-modal";
+import { CustomDialog } from "react-st-modal";
 import { CustomDialogContent } from "./EditDialog";
 
 const LinkEdition = () => {
@@ -57,6 +57,7 @@ const LinkEdition = () => {
                   showCloseIcon: true,
                 }
               );
+              window.location.reload(true);
             }}
           >
             &nbsp;&nbsp;Edit&nbsp;&nbsp;

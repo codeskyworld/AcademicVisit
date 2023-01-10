@@ -53,6 +53,7 @@ namespace AcademicVisitServer.Controllers
         public void EditLink([FromBody] FirstLinkInfo firstLinkInfo)
         {
             FirstLinkInfo firstLinkInfoReceived = firstLinkInfo;
+            DBProcess.ModifyLink(firstLinkInfo, dataContext);
         }
     }
 }

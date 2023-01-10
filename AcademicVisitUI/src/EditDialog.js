@@ -47,7 +47,7 @@ const CustomDialogContent = (props) => {
           if (!linkName || !linkAddress) {
             Alert("Please input both Link Name and Link Address", "Warning");
           } else {
-            EditLink(linkName, linkAddress);
+            EditLink(props.id, linkName, linkAddress);
             dialog.close();
           }
         }}

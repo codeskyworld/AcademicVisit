@@ -61,9 +61,10 @@ const GetEditLink = async (id, setLinkName, setLinkAddress) => {
     .catch((error) => alert("GetEdit error from GetEditLink is " + error));
 };
 
-const EditLink = async (linkName, linkAddress) => {
+const EditLink = async (linkId, linkName, linkAddress) => {
   await axios
     .put("http://localhost:5271/FirstLink", {
+      Id:linkId,
       LinkName: linkName,
       LinkAddress: linkAddress,
       LinkUpdatingTime: new Date().toJSON(),

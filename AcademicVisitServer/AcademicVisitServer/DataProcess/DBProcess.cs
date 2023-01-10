@@ -49,6 +49,21 @@ namespace AcademicVisitServer.DataProcess
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
+
+        public static void ModifyLink(FirstLinkInfo firstLinkInfo, DataContext dataContext)
+        {
+
+
+            var result = dataContext.FirstLinkInfos.FirstOrDefault(x => x.Id == firstLinkInfo.Id);
+            if (result != null)
+            {
+                result.LinkName = firstLinkInfo.LinkName;
+                result.LinkAddress = firstLinkInfo.LinkAddress;
+                result.LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(firstLinkInfo.LinkUpdatingTime);
+            }
+            dataContext.SaveChanges();
+            dataContext.Dispose();
+        }
     }
 
 }
