@@ -14,9 +14,11 @@ import { Alert, Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
 import { CustomDialogContent } from "./EditDialog";
 
+
 const LinkEdition = () => {
   const [linkName, setLinkName] = useState("");
   const [linkAddress, setLinkAddress] = useState("");
+  const [linkType, setLinkType] = useState("");
   const [linkList, setLinkList] = useState([]);
 
   useEffect(() => {
@@ -24,10 +26,10 @@ const LinkEdition = () => {
   }, [linkName]);
 
   const AddLinkHandler = async () => {
-    if (!linkName || !linkAddress) {
+    if (!linkName || !linkAddress || !linkType) {
       Alert("Please input both Link Name and Link Address", "Warning");
     } else {
-      AddLink(linkName, linkAddress);
+      AddLink(linkName, linkAddress, linkType);
       window.location.reload(true);
     }
   };
@@ -40,17 +42,24 @@ const LinkEdition = () => {
         <th scope="row">{link.id}</th>
         <td>{link.linkName}</td>
         <td>{link.linkAddress}</td>
+        <td>{link.linkType}</td>
         <td>{link.linkUpdatingTime}</td>
         <td>
           <Button
             color="success"
             onClick={async () => {
-              await GetEditLink(link.id, setLinkName, setLinkAddress);
+              await GetEditLink(
+                link.id,
+                setLinkName,
+                setLinkAddress,
+                setLinkType
+              );
               await CustomDialog(
                 <CustomDialogContent
                   id={link.id}
                   name={link.linkName}
                   address={link.linkAddress}
+                  type={link.linkType}
                 />,
                 {
                   title: `${link.id}`,
@@ -89,7 +98,7 @@ const LinkEdition = () => {
     <div className="container mt-4 mb-auto">
       <Form className="mb-5">
         <Row>
-          <Col md={6}>
+          <Col md={4}>
             <FormGroup>
               <Label for="linkName">Link Name</Label>
               <Input
@@ -103,7 +112,7 @@ const LinkEdition = () => {
               />
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={4}>
             <FormGroup>
               <Label for="linkAddress">Link Address</Label>
               <Input
@@ -117,12 +126,28 @@ const LinkEdition = () => {
               />
             </FormGroup>
           </Col>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="linkType">Link Type</Label>
+              <Input
+                id="linkType"
+                name="linkType"
+                placeholder="Please input the Link Type"
+                type="text"
+                onChange={(event) => {
+                  setLinkType(event.target.value);
+                }}
+              />
+            </FormGroup>
+          </Col>
         </Row>
+
         <Button
           onClick={() => {
             AddLinkHandler();
             document.getElementById("linkName").value = "";
             document.getElementById("linkAddress").value = "";
+            document.getElementById("linkType").value = "";
           }}
         >
           Add
@@ -135,6 +160,7 @@ const LinkEdition = () => {
             <th>#</th>
             <th>Link Name</th>
             <th>Link Address</th>
+            <th>Link Type</th>
             <th>Link Updating Time</th>
             <th>Manipulation</th>
           </tr>

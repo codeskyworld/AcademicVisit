@@ -1,5 +1,6 @@
 ﻿using AcademicVisit.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 
 namespace AcademicVisitServer.DataProcess
@@ -16,6 +17,7 @@ namespace AcademicVisitServer.DataProcess
             {
                 LinkName = firstLinkInfo.LinkName,
                 LinkAddress = firstLinkInfo.LinkAddress,
+                LinkType = firstLinkInfo.LinkType,
                 LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(firstLinkInfo.LinkUpdatingTime)
             });
 
@@ -27,8 +29,8 @@ namespace AcademicVisitServer.DataProcess
 
         public static List<FirstLinkInfo> ReadLink(DataContext dataContext)
         {
-            List<FirstLinkInfo> linklist = new List<FirstLinkInfo>();
-            linklist = dataContext.FirstLinkInfos.ToList();
+            var linklist = dataContext.FirstLinkInfos.ToList();
+            //linklist.ToList().ForEach(link => { link.LinkUpdatingTime = link.LinkUpdatingTime;
             dataContext.Dispose();
             return linklist;
         }
@@ -59,6 +61,7 @@ namespace AcademicVisitServer.DataProcess
             {
                 result.LinkName = firstLinkInfo.LinkName;
                 result.LinkAddress = firstLinkInfo.LinkAddress;
+                result.LinkType = firstLinkInfo.LinkType;
                 result.LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(firstLinkInfo.LinkUpdatingTime);
             }
             dataContext.SaveChanges();

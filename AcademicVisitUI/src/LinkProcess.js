@@ -1,13 +1,15 @@
 import axios from "axios";
+import moment from "moment";
 
-const AddLink = async (linkName, linkAddress) => {
+const AddLink = async (linkName, linkAddress, linkType) => {
   await axios
     .post(
       "http://localhost:5271/FirstLink",
       {
         LinkName: linkName,
         LinkAddress: linkAddress,
-        LinkUpdatingTime: new Date().toJSON(),
+        LinkType: linkType,
+        LinkUpdatingTime: new Date(),
       },
       {
         headers: {
@@ -30,7 +32,13 @@ const GetLink = async (setLinkList) => {
     .get("http://localhost:5271/FirstLink/GetAllId")
     .then((res) => {
       if (res.status === 200) {
-        setLinkList(res.data);
+        var timeResult = res.data.map((k) => ({
+          ...k,
+          linkUpdatingTime: moment(k.linkUpdatingTime).format(
+            "YYYY-MM-DD HH:mm:ss"
+          ),
+        }));
+        setLinkList(timeResult);
       }
     })
     .catch((error) => alert("Get error is " + error));
@@ -48,7 +56,7 @@ const RemoveLink = async (id) => {
     .catch((error) => alert("Remove error is " + error));
 };
 
-const GetEditLink = async (id, setLinkName, setLinkAddress) => {
+const GetEditLink = async (id, setLinkName, setLinkAddress, setLinkType) => {
   await axios
     .get(`http://localhost:5271/FirstLink/GetOneId/${id}`)
     .then((res) => {
@@ -56,17 +64,19 @@ const GetEditLink = async (id, setLinkName, setLinkAddress) => {
         console.log("Getting edit-link is successfull!");
         setLinkName(res.data[0].linkName);
         setLinkAddress(res.data[0].linkAddress);
+        setLinkType(res.data[0].linkType);
       }
     })
     .catch((error) => alert("GetEdit error from GetEditLink is " + error));
 };
 
-const EditLink = async (linkId, linkName, linkAddress) => {
+const EditLink = async (linkId, linkName, linkAddress, linkType) => {
   await axios
     .put("http://localhost:5271/FirstLink", {
-      Id:linkId,
+      Id: linkId,
       LinkName: linkName,
       LinkAddress: linkAddress,
+      LinkType: linkType,
       LinkUpdatingTime: new Date().toJSON(),
     })
     .then((res) => {

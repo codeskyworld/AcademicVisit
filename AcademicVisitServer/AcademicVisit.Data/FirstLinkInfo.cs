@@ -10,6 +10,8 @@ namespace AcademicVisit.Data
         [Required]
         public string? LinkAddress { get; set; }
         [Required]
+        public string? LinkType { get; set; }
+        [Required]
         public DateTime? LinkUpdatingTime { get; set; }
     }
 }

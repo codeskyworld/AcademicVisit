@@ -9,10 +9,11 @@ const CustomDialogContent = (props) => {
 
   const [linkName, setLinkName] = useState("");
   const [linkAddress, setLinkAddress] = useState("");
+  const [linkType, setLinkType] = useState("");
 
   return (
-    <Form className="EditDialog">
-      <Row>
+    <Form id="EditDialog">
+      <Row className="formContainer">
         <Col md={12}>
           <FormGroup>
             <Label for="linkName">Link Name</Label>
@@ -39,30 +40,46 @@ const CustomDialogContent = (props) => {
             />
           </FormGroup>
         </Col>
+        <Col md={12}>
+          <FormGroup>
+            <Label for="linkType">Link Type</Label>
+            <Input
+              name="linkType"
+              placeholder={props.type}
+              type="text"
+              onChange={(event) => {
+                setLinkType(event.target.value);
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <div className="buttonContainer">
+          <Button
+            color="warning"
+            onClick={() => {
+              if (!linkName || !linkAddress || !linkType) {
+                Alert(
+                  "Please input both Link Name and Link Address",
+                  "Warning"
+                );
+              } else {
+                EditLink(props.id, linkName, linkAddress, linkType);
+                dialog.close();
+              }
+            }}
+          >
+            Confirm
+          </Button>
+          <Button
+            color="info"
+            onClick={() => {
+              dialog.close();
+            }}
+          >
+            Cancel
+          </Button>
+        </div>
       </Row>
-      <Button
-        className="mb-3"
-        color="warning"
-        onClick={() => {
-          if (!linkName || !linkAddress) {
-            Alert("Please input both Link Name and Link Address", "Warning");
-          } else {
-            EditLink(props.id, linkName, linkAddress);
-            dialog.close();
-          }
-        }}
-      >
-        Confirm
-      </Button>
-      <Button
-        className="mb-3"
-        color="info"
-        onClick={() => {
-          dialog.close();
-        }}
-      >
-        &nbsp;Cancel&nbsp;
-      </Button>
     </Form>
   );
 };
