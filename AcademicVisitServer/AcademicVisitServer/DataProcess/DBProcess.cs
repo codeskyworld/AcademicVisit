@@ -30,7 +30,6 @@ namespace AcademicVisitServer.DataProcess
         public static List<FirstLinkInfo> ReadLink(DataContext dataContext)
         {
             var linklist = dataContext.FirstLinkInfos.ToList();
-            //linklist.ToList().ForEach(link => { link.LinkUpdatingTime = link.LinkUpdatingTime;
             dataContext.Dispose();
             return linklist;
         }
