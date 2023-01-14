@@ -2,7 +2,7 @@
 
 namespace AcademicVisit.Data
 {
-    public class FirstLinkInfo
+    public class LinkInfo
     {
         public int Id { get; set; }
         [Required]

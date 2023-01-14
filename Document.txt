@@ -1,3 +1,6 @@
+//How to update the structure of database using Entity Framework
+https://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx#:~:text=After%20creating%20a%20migration%20file,applied%20to%20the%20target%20database.
+
 
 // GOAL
 https://site.sciping.com/

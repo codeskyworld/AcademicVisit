@@ -7,23 +7,23 @@ namespace AcademicVisitServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FirstLinkController : Controller
+    public class LinkController : Controller
     {
         private readonly DataContext dataContext;
 
-        public FirstLinkController(DataContext dataContext)
+        public LinkController(DataContext dataContext)
         {
             this.dataContext = dataContext;
         }
 
 
         [HttpPost]
-        public void PostLink([FromBody] FirstLinkInfo firstLinkInfo)
+        public void PostLink([FromBody] LinkInfo LinkInfo)
         {
 
 
-            FirstLinkInfo firstLinkInfoReceived = firstLinkInfo;
-            DBProcess.AddLink(firstLinkInfoReceived, dataContext);
+            LinkInfo LinkInfoReceived = LinkInfo;
+            DBProcess.AddLink(LinkInfoReceived, dataContext);
         }
 
 
@@ -50,10 +50,10 @@ namespace AcademicVisitServer.Controllers
         }
 
         [HttpPut]
-        public void EditLink([FromBody] FirstLinkInfo firstLinkInfo)
+        public void EditLink([FromBody] LinkInfo LinkInfo)
         {
-            FirstLinkInfo firstLinkInfoReceived = firstLinkInfo;
-            DBProcess.ModifyLink(firstLinkInfo, dataContext);
+            LinkInfo LinkInfoReceived = LinkInfo;
+            DBProcess.ModifyLink(LinkInfo, dataContext);
         }
     }
 }

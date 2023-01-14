@@ -4,7 +4,7 @@ import moment from "moment";
 const AddLink = async (linkName, linkAddress, linkType) => {
   await axios
     .post(
-      "http://localhost:5271/FirstLink",
+      "http://localhost:5271/Link",
       {
         LinkName: linkName,
         LinkAddress: linkAddress,
@@ -29,7 +29,7 @@ const AddLink = async (linkName, linkAddress, linkType) => {
 
 const GetLink = async (setLinkList, setFullLinkList) => {
   await axios
-    .get("http://localhost:5271/FirstLink/GetAllId")
+    .get("http://localhost:5271/Link/GetAllId")
     .then((res) => {
       if (res.status === 200) {
         var FormalResult = res.data.map((k) => ({
@@ -47,7 +47,7 @@ const GetLink = async (setLinkList, setFullLinkList) => {
 
 const RemoveLink = async (id) => {
   await axios
-    .delete(`http://localhost:5271/FirstLink/${id}`)
+    .delete(`http://localhost:5271/Link/${id}`)
     .then((res) => {
       if (res.status === 200) {
         console.log("Remove link is successfull!");
@@ -59,7 +59,7 @@ const RemoveLink = async (id) => {
 
 const GetEditLink = async (id, setLinkName, setLinkAddress, setLinkType) => {
   await axios
-    .get(`http://localhost:5271/FirstLink/GetOneId/${id}`)
+    .get(`http://localhost:5271/Link/GetOneId/${id}`)
     .then((res) => {
       if (res.status === 200) {
         console.log("Getting edit-link is successfull!");
@@ -73,7 +73,7 @@ const GetEditLink = async (id, setLinkName, setLinkAddress, setLinkType) => {
 
 const EditLink = async (linkId, linkName, linkAddress, linkType) => {
   await axios
-    .put("http://localhost:5271/FirstLink", {
+    .put("http://localhost:5271/Link", {
       Id: linkId,
       LinkName: linkName,
       LinkAddress: linkAddress,

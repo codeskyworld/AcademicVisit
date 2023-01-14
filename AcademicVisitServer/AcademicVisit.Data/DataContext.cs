@@ -14,7 +14,7 @@ namespace AcademicVisit.Data
             modelBuilder.UseSerialColumns();
         }
 
-        public DbSet<FirstLinkInfo> FirstLinkInfos { get; set; }
+        public DbSet<LinkInfo> LinkInfos { get; set; }
         public DbSet<UserInfo> UserInfos { get; set; }
     }
 }

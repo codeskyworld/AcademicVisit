@@ -7,61 +7,61 @@ namespace AcademicVisitServer.DataProcess
 {
     public static class DBProcess
     {
-        public static void AddLink(FirstLinkInfo firstLinkInfo, DataContext dataContext)
+        public static void AddLink(LinkInfo LinkInfo, DataContext dataContext)
         {
 
-            List<FirstLinkInfo> firstLinklist = new List<FirstLinkInfo>();
+            List<LinkInfo> firstLinklist = new List<LinkInfo>();
 
 
-            firstLinklist.Add(new FirstLinkInfo()
+            firstLinklist.Add(new LinkInfo()
             {
-                LinkName = firstLinkInfo.LinkName,
-                LinkAddress = firstLinkInfo.LinkAddress,
-                LinkType = firstLinkInfo.LinkType,
-                LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(firstLinkInfo.LinkUpdatingTime)
+                LinkName = LinkInfo.LinkName,
+                LinkAddress = LinkInfo.LinkAddress,
+                LinkType = LinkInfo.LinkType,
+                LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(LinkInfo.LinkUpdatingTime)
             });
 
-            dataContext.FirstLinkInfos.AddRange(firstLinklist);
+            dataContext.LinkInfos.AddRange(firstLinklist);
 
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
 
-        public static List<FirstLinkInfo> ReadLink(DataContext dataContext)
+        public static List<LinkInfo> ReadLink(DataContext dataContext)
         {
-            var linklist = dataContext.FirstLinkInfos.ToList();
+            var linklist = dataContext.LinkInfos.ToList();
             dataContext.Dispose();
             return linklist;
         }
 
-        public static List<FirstLinkInfo> ReadOneLink(DataContext dataContext, int id)
+        public static List<LinkInfo> ReadOneLink(DataContext dataContext, int id)
         {
-            List<FirstLinkInfo> linklist = new List<FirstLinkInfo>();
-            linklist = dataContext.FirstLinkInfos.Where(x => x.Id == id).ToList();
+            List<LinkInfo> linklist = new List<LinkInfo>();
+            linklist = dataContext.LinkInfos.Where(x => x.Id == id).ToList();
             dataContext.Dispose();
             return linklist;
         }
 
         public static void RemoveLink(DataContext dataContext, int id)
         {
-            FirstLinkInfo firstLinkInfo = new FirstLinkInfo() { Id = id };
-            dataContext.FirstLinkInfos.Attach(firstLinkInfo);
-            dataContext.FirstLinkInfos.Remove(firstLinkInfo);
+            LinkInfo LinkInfo = new LinkInfo() { Id = id };
+            dataContext.LinkInfos.Attach(LinkInfo);
+            dataContext.LinkInfos.Remove(LinkInfo);
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
 
-        public static void ModifyLink(FirstLinkInfo firstLinkInfo, DataContext dataContext)
+        public static void ModifyLink(LinkInfo LinkInfo, DataContext dataContext)
         {
 
 
-            var result = dataContext.FirstLinkInfos.FirstOrDefault(x => x.Id == firstLinkInfo.Id);
+            var result = dataContext.LinkInfos.FirstOrDefault(x => x.Id == LinkInfo.Id);
             if (result != null)
             {
-                result.LinkName = firstLinkInfo.LinkName;
-                result.LinkAddress = firstLinkInfo.LinkAddress;
-                result.LinkType = firstLinkInfo.LinkType;
-                result.LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(firstLinkInfo.LinkUpdatingTime);
+                result.LinkName = LinkInfo.LinkName;
+                result.LinkAddress = LinkInfo.LinkAddress;
+                result.LinkType = LinkInfo.LinkType;
+                result.LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(LinkInfo.LinkUpdatingTime);
             }
             dataContext.SaveChanges();
             dataContext.Dispose();
