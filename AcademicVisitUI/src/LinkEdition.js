@@ -9,11 +9,10 @@ import {
   Button,
   Table,
 } from "reactstrap";
-import { AddLink, GetLink, RemoveLink, GetEditLink } from "./LinkProcess";
-import { Alert, Confirm } from "react-st-modal";
-import { CustomDialog } from "react-st-modal";
-import { CustomDialogContent } from "./EditDialog";
-
+import { AddLink, GetLink } from "./LinkProcess";
+import { linkTableRender } from "./LinkRender";
+import { Alert } from "react-st-modal";
+import { LinkFilterRender } from "./LinkFilterRender";
 
 const LinkEdition = () => {
   const [linkName, setLinkName] = useState("");
@@ -34,69 +33,9 @@ const LinkEdition = () => {
     }
   };
 
-  let linkTableRender;
-
-  linkTableRender = linkList.map((link, index) => {
-    return (
-      <tr key={index}>
-        <th scope="row">{link.id}</th>
-        <td>{link.linkName}</td>
-        <td>{link.linkAddress}</td>
-        <td>{link.linkType}</td>
-        <td>{link.linkUpdatingTime}</td>
-        <td>
-          <Button
-            color="success"
-            onClick={async () => {
-              await GetEditLink(
-                link.id,
-                setLinkName,
-                setLinkAddress,
-                setLinkType
-              );
-              await CustomDialog(
-                <CustomDialogContent
-                  id={link.id}
-                  name={link.linkName}
-                  address={link.linkAddress}
-                  type={link.linkType}
-                />,
-                {
-                  title: `${link.id}`,
-                  showCloseIcon: true,
-                }
-              );
-              window.location.reload(true);
-            }}
-          >
-            &nbsp;&nbsp;Edit&nbsp;&nbsp;
-          </Button>
-          &nbsp;&nbsp;
-          <Button
-            color="danger"
-            onClick={async () => {
-              const result = await Confirm(
-                `Are you sure to delete "${link.linkName}" ?`,
-                "Warning"
-              );
-              if (result) {
-                RemoveLink(link.id);
-                window.location.reload(true);
-              } else {
-                console.log("Deleting is canceled");
-              }
-            }}
-          >
-            Delete
-          </Button>
-        </td>
-      </tr>
-    );
-  });
-
   return (
-    <div className="container mt-4 mb-auto">
-      <Form className="mb-5">
+    <div id="LinkEdition" className="container mt-4 mb-auto">
+      <Form className="mb-3">
         <Row>
           <Col md={4}>
             <FormGroup>
@@ -153,7 +92,7 @@ const LinkEdition = () => {
           Add
         </Button>
       </Form>
-
+      <LinkFilterRender linkList={linkList} />
       <Table className="mb-5">
         <thead>
           <tr>
@@ -165,7 +104,9 @@ const LinkEdition = () => {
             <th>Manipulation</th>
           </tr>
         </thead>
-        <tbody>{linkTableRender}</tbody>
+        <tbody>
+          {linkTableRender(linkList, setLinkName, setLinkAddress, setLinkType)}
+        </tbody>
       </Table>
     </div>
   );

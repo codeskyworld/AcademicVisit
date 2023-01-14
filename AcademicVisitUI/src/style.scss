@@ -33,6 +33,23 @@ body,
   }
 }
 
+#LinkEdition {
+  .DropdownFilter {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: flex-start;
+    border: '1px solid #000';
+    height: 100;
+    overflow: 'hidden';
+    padding: '8px';
+    width: 300
+    
+    
+  }
+}
+
 .feather {
   width: 16px;
   height: 16px;
