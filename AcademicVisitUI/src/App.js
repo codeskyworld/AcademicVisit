@@ -1,14 +1,13 @@
 import React from "react";
 import Header from "./Header";
-import Form from "./Form";
 import Footer from "./Footer";
-import LinkEdition from "./LinkEdition";
+import LinkEditionRender from "./LinkEditionRender";
 
 const App = () => {
   return (
     <>
       <Header />
-      <LinkEdition />
+      <LinkEditionRender />
       <Footer />
     </>
   );

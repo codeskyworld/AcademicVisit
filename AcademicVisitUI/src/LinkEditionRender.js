@@ -14,14 +14,15 @@ import { linkTableRender } from "./LinkRender";
 import { Alert } from "react-st-modal";
 import { LinkFilterRender } from "./LinkFilterRender";
 
-const LinkEdition = () => {
+const LinkEditionRender = () => {
   const [linkName, setLinkName] = useState("");
   const [linkAddress, setLinkAddress] = useState("");
   const [linkType, setLinkType] = useState("");
   const [linkList, setLinkList] = useState([]);
+  const [fullLinkList, setFullLinkList] = useState([]);
 
   useEffect(() => {
-    GetLink(setLinkList);
+    GetLink(setLinkList, setFullLinkList);
   }, [linkName]);
 
   const AddLinkHandler = async () => {
@@ -92,7 +93,11 @@ const LinkEdition = () => {
           Add
         </Button>
       </Form>
-      <LinkFilterRender linkList={linkList} />
+      <LinkFilterRender
+        linkList={linkList}
+        fullLinkList={fullLinkList}
+        setLinkList={setLinkList}
+      />
       <Table className="mb-5">
         <thead>
           <tr>
@@ -111,4 +116,4 @@ const LinkEdition = () => {
     </div>
   );
 };
-export default LinkEdition;
+export default LinkEditionRender;

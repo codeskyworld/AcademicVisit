@@ -27,18 +27,19 @@ const AddLink = async (linkName, linkAddress, linkType) => {
     .catch((error) => alert("Add error is " + error));
 };
 
-const GetLink = async (setLinkList) => {
+const GetLink = async (setLinkList, setFullLinkList) => {
   await axios
     .get("http://localhost:5271/FirstLink/GetAllId")
     .then((res) => {
       if (res.status === 200) {
-        var timeResult = res.data.map((k) => ({
+        var FormalResult = res.data.map((k) => ({
           ...k,
           linkUpdatingTime: moment(k.linkUpdatingTime).format(
             "YYYY-MM-DD HH:mm:ss"
           ),
         }));
-        setLinkList(timeResult);
+        setLinkList(FormalResult);
+        setFullLinkList(FormalResult);
       }
     })
     .catch((error) => alert("Get error is " + error));

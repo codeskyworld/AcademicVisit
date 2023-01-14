@@ -10,9 +10,34 @@ const LinkFilterRender = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
+  const FilterClick = (objButton) => {
+    if (objButton.target.value === "All") {
+      props.setLinkList(props.fullLinkList);
+    } else {
+      const resultFilter = props.fullLinkList.filter(
+        (prop) => prop.linkType === objButton.target.value
+      );
+      props.setLinkList(resultFilter);
+    }
+  };
+
+  const RemoveDuplicates = (arr) => {
+    return arr.filter((item, index) => arr.indexOf(item) === index);
+  };
+
   const FilterItemsRender = (props) => {
-    return props.linkList.map((link, index) => {
-      return <DropdownItem key={index}>{link.linkType}</DropdownItem>;
+    const typeFullList = props.fullLinkList.map((prop) => {
+      return prop.linkType;
+    });
+
+    const typeList = RemoveDuplicates(typeFullList);
+
+    return typeList.map((type, index) => {
+      return (
+        <DropdownItem key={index} value={type} onClick={FilterClick}>
+          {type}
+        </DropdownItem>
+      );
     });
   };
 
@@ -21,7 +46,12 @@ const LinkFilterRender = (props) => {
       <DropdownToggle caret size="md">
         Filter
       </DropdownToggle>
-      <DropdownMenu>{FilterItemsRender(props)}</DropdownMenu>
+      <DropdownMenu>
+        <DropdownItem value="All" onClick={FilterClick}>
+          ALL
+        </DropdownItem>
+        {FilterItemsRender(props)}
+      </DropdownMenu>
     </Dropdown>
   );
 };
