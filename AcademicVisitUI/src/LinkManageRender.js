@@ -12,7 +12,7 @@ import {
 import { AddLink, GetLinks } from "./LinkProcess";
 import { linkTableRender } from "./LinkTableRender";
 import { Alert } from "react-st-modal";
-import { LinkFilterRender } from "./LinkFilterRender";
+import { LinkFilterDropdown } from "./LinkFilterDropdown";
 
 const LinkManageRender = () => {
   const [linkName, setLinkName] = useState("");
@@ -97,7 +97,7 @@ const LinkManageRender = () => {
           &nbsp;&nbsp;Add&nbsp;&nbsp;
         </Button>
       </Form>
-      <LinkFilterRender
+      <LinkFilterDropdown
         linkList={linkList}
         fullLinkList={fullLinkList}
         setLinkList={setLinkList}

@@ -19,7 +19,7 @@ import { AddUser, GetUsers } from "./UserProcess";
 const UserManageRender = () => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [userType, setUserType] = useState("");
+  const [userType, setUserType] = useState("Please Select");
   const [userList, setUserList] = useState([]);
   const [fullUserList, setFullUserList] = useState([]);
 
@@ -28,7 +28,7 @@ const UserManageRender = () => {
   //   }, [userName]);
 
   const AddUserHandler = async () => {
-    if (!userName || !userPassword || !userType) {
+    if (!userName || !userPassword || userType === "Please Select") {
       Alert(
         "Please input both User Name, User Password and User Type",
         "Warning"
@@ -74,7 +74,7 @@ const UserManageRender = () => {
           <Col md={4}>
             <FormGroup>
               <Label for="userType">User Type</Label>
-              <UserTypeDropdown />
+              <UserTypeDropdown userType={userType} setUserType={setUserType} />
             </FormGroup>
           </Col>
         </Row>

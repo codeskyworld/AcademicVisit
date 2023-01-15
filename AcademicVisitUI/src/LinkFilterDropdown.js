@@ -6,7 +6,7 @@ import {
   DropdownMenu,
 } from "reactstrap";
 
-const LinkFilterRender = (props) => {
+const LinkFilterDropdown = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
@@ -56,4 +56,4 @@ const LinkFilterRender = (props) => {
   );
 };
 
-export { LinkFilterRender };
+export { LinkFilterDropdown };
