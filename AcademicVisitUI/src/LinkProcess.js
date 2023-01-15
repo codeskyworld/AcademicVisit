@@ -20,14 +20,13 @@ const AddLink = async (linkName, linkAddress, linkType) => {
     )
     .then((res) => {
       if (res.status === 200) {
-        console.log("Add link is successfull!");
-        console.log(res);
+        return;
       }
     })
     .catch((error) => alert("Add error is " + error));
 };
 
-const GetLink = async (setLinkList, setFullLinkList) => {
+const GetLinks = async (setLinkList, setFullLinkList) => {
   await axios
     .get("http://localhost:5271/Link/GetAllId")
     .then((res) => {
@@ -62,7 +61,6 @@ const GetEditLink = async (id, setLinkName, setLinkAddress, setLinkType) => {
     .get(`http://localhost:5271/Link/GetOneId/${id}`)
     .then((res) => {
       if (res.status === 200) {
-        console.log("Getting edit-link is successfull!");
         setLinkName(res.data[0].linkName);
         setLinkAddress(res.data[0].linkAddress);
         setLinkType(res.data[0].linkType);
@@ -82,11 +80,10 @@ const EditLink = async (linkId, linkName, linkAddress, linkType) => {
     })
     .then((res) => {
       if (res.status === 200) {
-        console.log("Edit link is successfull!");
-        console.log(res);
+        return;
       }
     })
     .catch((error) => alert("Edit error is " + error));
 };
 
-export { AddLink, GetLink, RemoveLink, GetEditLink, EditLink };
+export { AddLink, GetLinks, RemoveLink, GetEditLink, EditLink };

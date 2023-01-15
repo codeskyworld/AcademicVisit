@@ -9,12 +9,12 @@ import {
   Button,
   Table,
 } from "reactstrap";
-import { AddLink, GetLink } from "./LinkProcess";
+import { AddLink, GetLinks } from "./LinkProcess";
 import { linkTableRender } from "./LinkTableRender";
 import { Alert } from "react-st-modal";
 import { LinkFilterRender } from "./LinkFilterRender";
 
-const LinkEditionRender = () => {
+const LinkManageRender = () => {
   const [linkName, setLinkName] = useState("");
   const [linkAddress, setLinkAddress] = useState("");
   const [linkType, setLinkType] = useState("");
@@ -22,12 +22,15 @@ const LinkEditionRender = () => {
   const [fullLinkList, setFullLinkList] = useState([]);
 
   useEffect(() => {
-    GetLink(setLinkList, setFullLinkList);
+    GetLinks(setLinkList, setFullLinkList);
   }, [linkName]);
 
   const AddLinkHandler = async () => {
     if (!linkName || !linkAddress || !linkType) {
-      Alert("Please input both Link Name and Link Address", "Warning");
+      Alert(
+        "Please input both Link Name, Link Address and Link Type",
+        "Warning"
+      );
     } else {
       AddLink(linkName, linkAddress, linkType);
       window.location.reload(true);
@@ -117,4 +120,4 @@ const LinkEditionRender = () => {
     </div>
   );
 };
-export default LinkEditionRender;
+export default LinkManageRender;

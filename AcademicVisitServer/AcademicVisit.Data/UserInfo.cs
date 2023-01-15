@@ -12,6 +12,6 @@ namespace AcademicVisit.Data
         [Required]
         public string UserType { get; set; } = "General";
         [Required]
-        public DateTime UserUpdatingTime { get; set; }
+        public DateTime? UserUpdatingTime { get; set; }
     }
 }

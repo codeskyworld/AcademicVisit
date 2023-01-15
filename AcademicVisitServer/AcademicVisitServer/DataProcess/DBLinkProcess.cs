@@ -5,24 +5,21 @@ using System.Collections.Generic;
 
 namespace AcademicVisitServer.DataProcess
 {
-    public static class DBProcess
+    public static class DBLinkProcess
     {
-        public static void AddLink(LinkInfo LinkInfo, DataContext dataContext)
+        public static void AddLink(LinkInfo linkInfo, DataContext dataContext)
         {
 
-            List<LinkInfo> firstLinklist = new List<LinkInfo>();
-
-
-            firstLinklist.Add(new LinkInfo()
+            List<LinkInfo> linkList = new List<LinkInfo>();
+            linkList.Add(new LinkInfo()
             {
-                LinkName = LinkInfo.LinkName,
-                LinkAddress = LinkInfo.LinkAddress,
-                LinkType = LinkInfo.LinkType,
-                LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(LinkInfo.LinkUpdatingTime)
+                LinkName = linkInfo.LinkName,
+                LinkAddress = linkInfo.LinkAddress,
+                LinkType = linkInfo.LinkType,
+                LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(linkInfo.LinkUpdatingTime)
             });
 
-            dataContext.LinkInfos.AddRange(firstLinklist);
-
+            dataContext.LinkInfos.AddRange(linkList);
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
@@ -51,17 +48,15 @@ namespace AcademicVisitServer.DataProcess
             dataContext.Dispose();
         }
 
-        public static void ModifyLink(LinkInfo LinkInfo, DataContext dataContext)
+        public static void ModifyLink(LinkInfo linkInfo, DataContext dataContext)
         {
-
-
-            var result = dataContext.LinkInfos.FirstOrDefault(x => x.Id == LinkInfo.Id);
+            var result = dataContext.LinkInfos.FirstOrDefault(x => x.Id == linkInfo.Id);
             if (result != null)
             {
-                result.LinkName = LinkInfo.LinkName;
-                result.LinkAddress = LinkInfo.LinkAddress;
-                result.LinkType = LinkInfo.LinkType;
-                result.LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(LinkInfo.LinkUpdatingTime);
+                result.LinkName = linkInfo.LinkName;
+                result.LinkAddress = linkInfo.LinkAddress;
+                result.LinkType = linkInfo.LinkType;
+                result.LinkUpdatingTime = DateTimeExtensions.SetKindUtcWay(linkInfo.LinkUpdatingTime);
             }
             dataContext.SaveChanges();
             dataContext.Dispose();

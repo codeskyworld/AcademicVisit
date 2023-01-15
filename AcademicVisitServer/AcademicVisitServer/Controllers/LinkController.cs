@@ -18,12 +18,10 @@ namespace AcademicVisitServer.Controllers
 
 
         [HttpPost]
-        public void PostLink([FromBody] LinkInfo LinkInfo)
+        public void PostLink([FromBody] LinkInfo linkInfo)
         {
 
-
-            LinkInfo LinkInfoReceived = LinkInfo;
-            DBProcess.AddLink(LinkInfoReceived, dataContext);
+            DBLinkProcess.AddLink(linkInfo, dataContext);
         }
 
 
@@ -32,28 +30,27 @@ namespace AcademicVisitServer.Controllers
         public JsonResult GetLink()
         {
 
-            return new JsonResult(DBProcess.ReadLink(dataContext));
+            return new JsonResult(DBLinkProcess.ReadLink(dataContext));
         }
 
         [HttpGet]
         [Route("GetOneId/{id}")]
         public JsonResult GetEditLink(int id)
         {
-            return new JsonResult(DBProcess.ReadOneLink(dataContext, id));
+            return new JsonResult(DBLinkProcess.ReadOneLink(dataContext, id));
         }
 
 
         [HttpDelete("{id}")]
         public void DeleteLink(int id)
         {
-            DBProcess.RemoveLink(dataContext, id);
+            DBLinkProcess.RemoveLink(dataContext, id);
         }
 
         [HttpPut]
-        public void EditLink([FromBody] LinkInfo LinkInfo)
+        public void EditLink([FromBody] LinkInfo linkInfo)
         {
-            LinkInfo LinkInfoReceived = LinkInfo;
-            DBProcess.ModifyLink(LinkInfo, dataContext);
+            DBLinkProcess.ModifyLink(linkInfo, dataContext);
         }
     }
 }

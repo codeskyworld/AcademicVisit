@@ -9,20 +9,21 @@ namespace AcademicVisitServer.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
-        
 
-            private readonly DataContext dataContext;
 
-            public UserController(DataContext dataContext)
-            {
-                this.dataContext = dataContext;
-            }
+        private readonly DataContext dataContext;
 
-            [HttpPost]
-            public void PostLink([FromBody] LinkInfo LinkInfo)
-            {
-                LinkInfo LinkInfoReceived = LinkInfo;
-                DBProcess.AddLink(LinkInfoReceived, dataContext);
-            }   
+        public UserController(DataContext dataContext)
+        {
+            this.dataContext = dataContext;
+        }
+
+        [HttpPost]
+        public void PostUser([FromBody] UserInfo userInfo)
+        {
+            UserInfo UserInfoReceived = userInfo;
+            DBUserProcess.AddUser(userInfo, dataContext);
+
+        }
     }
 }

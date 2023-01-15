@@ -9,67 +9,71 @@ import {
   Button,
   Table,
 } from "reactstrap";
-import { AddLink, GetLink } from "./LinkProcess";
+import { AddLink, GetLinks } from "./LinkProcess";
 import { Alert } from "react-st-modal";
 import { UserTableRender } from "./UserTableRender";
 import UserTypeDropdown from "./UserTypeDropdown";
 import { UserFilterRender } from "./UserFilterRender";
+import { AddUser, GetUsers } from "./UserProcess";
 
 const UserManageRender = () => {
-  const [linkName, setLinkName] = useState("");
-  const [linkAddress, setLinkAddress] = useState("");
-  const [linkType, setLinkType] = useState("");
-  const [linkList, setLinkList] = useState([]);
-  const [fullLinkList, setFullLinkList] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userType, setUserType] = useState("");
+  const [userList, setUserList] = useState([]);
+  const [fullUserList, setFullUserList] = useState([]);
 
-  useEffect(() => {
-    GetLink(setLinkList, setFullLinkList);
-  }, [linkName]);
+  //   useEffect(() => {
+  //     GetUsers(setUserList, setFullUserList);
+  //   }, [userName]);
 
-  const AddLinkHandler = async () => {
-    if (!linkName || !linkAddress || !linkType) {
-      Alert("Please input both Link Name and Link Address", "Warning");
+  const AddUserHandler = async () => {
+    if (!userName || !userPassword || !userType) {
+      Alert(
+        "Please input both User Name, User Password and User Type",
+        "Warning"
+      );
     } else {
-      AddLink(linkName, linkAddress, linkType);
+      AddUser(userName, userPassword, userType);
       window.location.reload(true);
     }
   };
 
   return (
-    <div id="LinkEdition" className="container mt-4 mb-auto">
+    <div id="UserEdition" className="container mt-4 mb-auto">
       <Form className="mb-3">
         <Row>
           <Col md={4}>
             <FormGroup>
-              <Label for="linkName">User Name</Label>
+              <Label for="userName">User Name</Label>
               <Input
-                id="linkName"
-                name="linkName"
+                id="userName"
+                name="userName"
                 placeholder="Please input User Name"
                 type="text"
                 onChange={(event) => {
-                  setLinkName(event.target.value);
+                  setUserName(event.target.value);
                 }}
               />
             </FormGroup>
           </Col>
           <Col md={4}>
             <FormGroup>
-              <Label for="linkAddress">User Password</Label>
+              <Label for="userPassword">User Password</Label>
               <Input
-                id="linkAddress"
-                name="linkAddress"
+                id="userPassword"
+                name="userPassword"
                 placeholder="Please input User Password"
                 type="password"
                 onChange={(event) => {
-                  setLinkAddress(event.target.value);
+                  setUserPassword(event.target.value);
                 }}
               />
             </FormGroup>
           </Col>
           <Col md={4}>
             <FormGroup>
-              <Label for="linkType">User Type</Label>
+              <Label for="userType">User Type</Label>
               <UserTypeDropdown />
             </FormGroup>
           </Col>
@@ -78,19 +82,19 @@ const UserManageRender = () => {
         <Button
           color="primary"
           onClick={() => {
-            AddLinkHandler();
-            document.getElementById("linkName").value = "";
-            document.getElementById("linkAddress").value = "";
-            document.getElementById("linkType").value = "";
+            AddUserHandler();
+            document.getElementById("userName").value = "";
+            document.getElementById("userPassword").value = "";
+            document.getElementById("userType").value = "";
           }}
         >
           &nbsp;&nbsp;Add&nbsp;&nbsp;
         </Button>
       </Form>
       <UserFilterRender
-        linkList={linkList}
-        fullLinkList={fullLinkList}
-        setLinkList={setLinkList}
+        userList={userList}
+        fullUserList={fullUserList}
+        setUserList={setUserList}
       />
       <Table className="mb-5">
         <thead>
@@ -104,7 +108,7 @@ const UserManageRender = () => {
           </tr>
         </thead>
         <tbody>
-          {UserTableRender(linkList, setLinkName, setLinkAddress, setLinkType)}
+          {UserTableRender(userList, setUserName, setUserPassword, setUserType)}
         </tbody>
       </Table>
     </div>
