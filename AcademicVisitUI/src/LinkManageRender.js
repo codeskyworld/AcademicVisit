@@ -10,7 +10,7 @@ import {
   Table,
 } from "reactstrap";
 import { AddLink, GetLink } from "./LinkProcess";
-import { linkTableRender } from "./LinkRender";
+import { linkTableRender } from "./LinkTableRender";
 import { Alert } from "react-st-modal";
 import { LinkFilterRender } from "./LinkFilterRender";
 
@@ -44,7 +44,7 @@ const LinkEditionRender = () => {
               <Input
                 id="linkName"
                 name="linkName"
-                placeholder="Please input the Link Name"
+                placeholder="Please input Link Name"
                 type="text"
                 onChange={(event) => {
                   setLinkName(event.target.value);
@@ -58,7 +58,7 @@ const LinkEditionRender = () => {
               <Input
                 id="linkAddress"
                 name="linkAddress"
-                placeholder="Please input the Link Address"
+                placeholder="Please input Link Address"
                 type="url"
                 onChange={(event) => {
                   setLinkAddress(event.target.value);
@@ -72,7 +72,7 @@ const LinkEditionRender = () => {
               <Input
                 id="linkType"
                 name="linkType"
-                placeholder="Please input the Link Type"
+                placeholder="Please input Link Type"
                 type="text"
                 onChange={(event) => {
                   setLinkType(event.target.value);
@@ -83,6 +83,7 @@ const LinkEditionRender = () => {
         </Row>
 
         <Button
+          color="primary"
           onClick={() => {
             AddLinkHandler();
             document.getElementById("linkName").value = "";
@@ -90,7 +91,7 @@ const LinkEditionRender = () => {
             document.getElementById("linkType").value = "";
           }}
         >
-          Add
+          &nbsp;&nbsp;Add&nbsp;&nbsp;
         </Button>
       </Form>
       <LinkFilterRender

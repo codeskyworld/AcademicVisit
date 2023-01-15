@@ -4,7 +4,7 @@ import { Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { EditLink } from "./LinkProcess";
 import { Alert } from "react-st-modal";
 
-const CustomDialogContent = (props) => {
+const LinkDialogContent = (props) => {
   const dialog = useDialog();
 
   const [linkName, setLinkName] = useState("");
@@ -53,9 +53,9 @@ const CustomDialogContent = (props) => {
             />
           </FormGroup>
         </Col>
-        <div className="buttonContainer">
+        <div className="buttonContainer mt-4">
           <Button
-            color="warning"
+            color="primary"
             onClick={() => {
               if (!linkName || !linkAddress || !linkType) {
                 Alert(
@@ -71,7 +71,7 @@ const CustomDialogContent = (props) => {
             Confirm
           </Button>
           <Button
-            color="info"
+            color="secondary"
             onClick={() => {
               dialog.close();
             }}
@@ -84,4 +84,4 @@ const CustomDialogContent = (props) => {
   );
 };
 
-export { CustomDialogContent };
+export { LinkDialogContent };

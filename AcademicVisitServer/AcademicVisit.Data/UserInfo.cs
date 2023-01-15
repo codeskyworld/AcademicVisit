@@ -10,6 +10,8 @@ namespace AcademicVisit.Data
         [Required]
         public string UserPassword { get; set; } = "default UserPassword";
         [Required]
+        public string UserType { get; set; } = "General";
+        [Required]
         public DateTime UserUpdatingTime { get; set; }
     }
 }
