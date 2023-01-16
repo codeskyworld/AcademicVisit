@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <LinkManageRender />
+      <UserManageRender />
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
-import { RemoveLink, GetEditLink } from "./LinkProcess";
+import { RemoveLink } from "./LinkProcess";
 import { Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
-import { LinkDialogContent } from "./LinkEditDialog";
+import { LinkDialogContent } from "./LinkDialogContent";
 import { Button } from "reactstrap";
 
 const linkTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
@@ -17,12 +17,6 @@ const linkTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
           <Button
             color="success"
             onClick={async () => {
-              // await GetEditLink(
-              //   link.id,
-              //   setLinkName,
-              //   setLinkAddress,
-              //   setLinkType
-              // );
               await CustomDialog(
                 <LinkDialogContent
                   id={link.id}

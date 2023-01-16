@@ -32,14 +32,6 @@ namespace AcademicVisitServer.Controllers
             return new JsonResult(DBLinkProcess.ReadLinks(dataContext));
         }
 
-        [HttpGet]
-        [Route("GetOneId/{id}")]
-        public JsonResult GetEditLink(int id)
-        {
-            return new JsonResult(DBLinkProcess.ReadOneLink(dataContext, id));
-        }
-
-
         [HttpDelete("{id}")]
         public void DeleteLink(int id)
         {

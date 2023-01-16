@@ -38,5 +38,11 @@ namespace AcademicVisitServer.Controllers
         {
             DBUserProcess.RemoveUser(dataContext, id);
         }
+
+        [HttpPut]
+        public void EditUser([FromBody] UserInfo userInfo)
+        {
+            DBUserProcess.ModifyUser(userInfo, dataContext);
+        }
     }
 }

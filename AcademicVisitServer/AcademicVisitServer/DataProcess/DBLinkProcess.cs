@@ -31,14 +31,6 @@ namespace AcademicVisitServer.DataProcess
             return linklist;
         }
 
-        public static List<LinkInfo> ReadOneLink(DataContext dataContext, int id)
-        {
-            List<LinkInfo> linklist = new List<LinkInfo>();
-            linklist = dataContext.LinkInfos.Where(x => x.Id == id).ToList();
-            dataContext.Dispose();
-            return linklist;
-        }
-
         public static void RemoveLink(DataContext dataContext, int id)
         {
             LinkInfo linkInfo = new LinkInfo() { Id = id };

@@ -1,64 +1,65 @@
 import { useDialog } from "react-st-modal";
 import React, { useState } from "react";
 import { Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { EditLink } from "./LinkProcess";
+import { EditUser } from "./UserProcess";
 import { Alert } from "react-st-modal";
 import UserTypeDropdown from "./UserTypeDropdown";
 
 const UserDialogContent = (props) => {
   const dialog = useDialog();
 
-  const [linkName, setLinkName] = useState("");
-  const [linkAddress, setLinkAddress] = useState("");
-  const [linkType, setLinkType] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userType, setUserType] = useState("Please Select");
 
   return (
     <Form id="EditDialog">
       <Row className="formContainer">
         <Col md={12}>
           <FormGroup>
-            <Label for="linkName">User Name</Label>
+            <Label for="userName">User Name</Label>
             <Input
-              name="linkName"
+              name="userName"
               placeholder={props.name}
               type="text"
               onChange={(event) => {
-                setLinkName(event.target.value);
+                setUserName(event.target.value);
               }}
             />
           </FormGroup>
         </Col>
         <Col md={12}>
           <FormGroup>
-            <Label for="linkAddress">New PassWord</Label>
+            <Label for="userPassword">New PassWord</Label>
             <Input
-              name="linkAddress"
+              name="userPassword"
               placeholder="Please input new password"
               type="password"
               onChange={(event) => {
-                setLinkAddress(event.target.value);
+                setUserPassword(event.target.value);
               }}
             />
           </FormGroup>
         </Col>
         <Col md={12}>
           <FormGroup>
-            <Label for="linkType">User Type</Label>
-            <UserTypeDropdown />
+            <Label for="userType">User Type</Label>
+            <UserTypeDropdown userType={userType} setUserType={setUserType} />
           </FormGroup>
         </Col>
         <div className="buttonContainer mt-4">
           <Button
             color="primary"
             onClick={() => {
-              if (!linkName || !linkAddress || !linkType) {
+              if (!userName || !userPassword || !userType) {
                 Alert(
-                  "Please input both Link Name and Link Address",
+                  "Please input both User Name, User Password and User Type",
                   "Warning"
                 );
               } else {
-                EditLink(props.id, linkName, linkAddress, linkType);
+                EditUser(props.id, userName, userPassword, userType);
                 dialog.close();
+                window.location.reload(true);
               }
             }}
           >

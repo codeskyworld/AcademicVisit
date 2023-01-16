@@ -1,7 +1,7 @@
-import { RemoveUser, GetEditUser } from "./UserProcess";
+import { RemoveUser } from "./UserProcess";
 import { Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
-import { UserDialogContent } from "./UserEditDialog";
+import { UserDialogContent } from "./UserDialogContent";
 import { Button } from "reactstrap";
 
 const UserTableRender = (userList, setUserName, setUserType) =>
@@ -16,7 +16,6 @@ const UserTableRender = (userList, setUserName, setUserType) =>
           <Button
             color="success"
             onClick={async () => {
-              await GetEditUser(user.id, setUserName, setUserType);
               await CustomDialog(
                 <UserDialogContent
                   id={user.id}
@@ -28,7 +27,6 @@ const UserTableRender = (userList, setUserName, setUserType) =>
                   showCloseIcon: true,
                 }
               );
-              window.location.reload(true);
             }}
           >
             &nbsp;&nbsp;Edit&nbsp;&nbsp;

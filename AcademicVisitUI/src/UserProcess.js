@@ -57,24 +57,12 @@ const RemoveUser = async (id) => {
     .catch((error) => alert("Remove error is " + error));
 };
 
-const GetEditUser = async (id, setUserName, setUserType) => {
-  await axios
-    .get(`http://localhost:5271/User/GetOneId/${id}`)
-    .then((res) => {
-      if (res.status === 200) {
-        setUserName(res.data[0].userName);
-        setUserType(res.data[0].userType);
-      }
-    })
-    .catch((error) => alert("GetEdit error from GetEditUser is " + error));
-};
-
-const EditUser = async (userId, userName, userAddress, userType) => {
+const EditUser = async (userId, userName, userPassword, userType) => {
   await axios
     .put("http://localhost:5271/User", {
       Id: userId,
       UserName: userName,
-      UserAddress: userAddress,
+      UserPassword: userPassword,
       UserType: userType,
       UserUpdatingTime: new Date().toJSON(),
     })
@@ -86,4 +74,4 @@ const EditUser = async (userId, userName, userAddress, userType) => {
     .catch((error) => alert("Edit error is " + error));
 };
 
-export { AddUser, GetUsers, RemoveUser, GetEditUser, EditUser };
+export { AddUser, GetUsers, RemoveUser, EditUser };

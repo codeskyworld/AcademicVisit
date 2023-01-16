@@ -35,5 +35,19 @@ namespace AcademicVisitServer.DataProcess
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
+
+        public static void ModifyUser(UserInfo userInfo, DataContext dataContext)
+        {
+            var result = dataContext.UserInfos.FirstOrDefault(x => x.Id == userInfo.Id);
+            if (result != null)
+            {
+                result.UserName = userInfo.UserName;
+                result.UserPassword = userInfo.UserPassword;
+                result.UserType = userInfo.UserType;
+                result.UserUpdatingTime = DateTimeExtensions.SetKindUtcWay(userInfo.UserUpdatingTime);
+            }
+            dataContext.SaveChanges();
+            dataContext.Dispose();
+        }
     }
 }

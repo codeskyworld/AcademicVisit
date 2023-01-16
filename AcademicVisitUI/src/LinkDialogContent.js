@@ -65,6 +65,7 @@ const LinkDialogContent = (props) => {
               } else {
                 EditLink(props.id, linkName, linkAddress, linkType);
                 dialog.close();
+                window.location.reload(true);
               }
             }}
           >

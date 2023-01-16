@@ -56,19 +56,6 @@ const RemoveLink = async (id) => {
     .catch((error) => alert("Remove error is " + error));
 };
 
-const GetEditLink = async (id, setLinkName, setLinkAddress, setLinkType) => {
-  await axios
-    .get(`http://localhost:5271/Link/GetOneId/${id}`)
-    .then((res) => {
-      if (res.status === 200) {
-        setLinkName(res.data[0].linkName);
-        setLinkAddress(res.data[0].linkAddress);
-        setLinkType(res.data[0].linkType);
-      }
-    })
-    .catch((error) => alert("GetEdit error from GetEditLink is " + error));
-};
-
 const EditLink = async (linkId, linkName, linkAddress, linkType) => {
   await axios
     .put("http://localhost:5271/Link", {
@@ -86,4 +73,4 @@ const EditLink = async (linkId, linkName, linkAddress, linkType) => {
     .catch((error) => alert("Edit error is " + error));
 };
 
-export { AddLink, GetLinks, RemoveLink, GetEditLink, EditLink };
+export { AddLink, GetLinks, RemoveLink, EditLink };
