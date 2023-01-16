@@ -17,12 +17,12 @@ const linkTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
           <Button
             color="success"
             onClick={async () => {
-              await GetEditLink(
-                link.id,
-                setLinkName,
-                setLinkAddress,
-                setLinkType
-              );
+              // await GetEditLink(
+              //   link.id,
+              //   setLinkName,
+              //   setLinkAddress,
+              //   setLinkType
+              // );
               await CustomDialog(
                 <LinkDialogContent
                   id={link.id}
@@ -35,7 +35,6 @@ const linkTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
                   showCloseIcon: true,
                 }
               );
-              window.location.reload(true);
             }}
           >
             &nbsp;&nbsp;Edit&nbsp;&nbsp;

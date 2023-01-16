@@ -34,7 +34,7 @@ const GetUsers = async (setUserList, setFullUserList) => {
       if (res.status === 200) {
         var FormalResult = res.data.map((k) => ({
           ...k,
-          linkUpdatingTime: moment(k.userUpdatingTime).format(
+          userUpdatingTime: moment(k.userUpdatingTime).format(
             "YYYY-MM-DD HH:mm:ss"
           ),
         }));
@@ -45,4 +45,45 @@ const GetUsers = async (setUserList, setFullUserList) => {
     .catch((error) => alert("Get error is " + error));
 };
 
-export { AddUser, GetUsers };
+const RemoveUser = async (id) => {
+  await axios
+    .delete(`http://localhost:5271/User/${id}`)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Remove User is successfull!");
+        console.log(res);
+      }
+    })
+    .catch((error) => alert("Remove error is " + error));
+};
+
+const GetEditUser = async (id, setUserName, setUserType) => {
+  await axios
+    .get(`http://localhost:5271/User/GetOneId/${id}`)
+    .then((res) => {
+      if (res.status === 200) {
+        setUserName(res.data[0].userName);
+        setUserType(res.data[0].userType);
+      }
+    })
+    .catch((error) => alert("GetEdit error from GetEditUser is " + error));
+};
+
+const EditUser = async (userId, userName, userAddress, userType) => {
+  await axios
+    .put("http://localhost:5271/User", {
+      Id: userId,
+      UserName: userName,
+      UserAddress: userAddress,
+      UserType: userType,
+      UserUpdatingTime: new Date().toJSON(),
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        return;
+      }
+    })
+    .catch((error) => alert("Edit error is " + error));
+};
+
+export { AddUser, GetUsers, RemoveUser, GetEditUser, EditUser };

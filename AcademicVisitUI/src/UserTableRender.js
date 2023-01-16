@@ -1,37 +1,30 @@
-import { RemoveLink, GetEditLink } from "./LinkProcess";
+import { RemoveUser, GetEditUser } from "./UserProcess";
 import { Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
 import { UserDialogContent } from "./UserEditDialog";
 import { Button } from "reactstrap";
 
-const UserTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
-  linkList.map((link, index) => {
+const UserTableRender = (userList, setUserName, setUserType) =>
+  userList.map((user, index) => {
     return (
       <tr key={index}>
-        <th scope="row">{link.id}</th>
-        <td>{link.linkName}</td>
-        <td>{link.linkAddress}</td>
-        <td>{link.linkType}</td>
-        <td>{link.linkUpdatingTime}</td>
+        <th scope="row">{user.id}</th>
+        <td>{user.userName}</td>
+        <td>{user.userType}</td>
+        <td>{user.userUpdatingTime}</td>
         <td>
           <Button
             color="success"
             onClick={async () => {
-              await GetEditLink(
-                link.id,
-                setLinkName,
-                setLinkAddress,
-                setLinkType
-              );
+              await GetEditUser(user.id, setUserName, setUserType);
               await CustomDialog(
                 <UserDialogContent
-                  id={link.id}
-                  name={link.linkName}
-                  address={link.linkAddress}
-                  type={link.linkType}
+                  id={user.id}
+                  name={user.userName}
+                  type={user.userType}
                 />,
                 {
-                  title: `${link.id}`,
+                  title: `${user.id}`,
                   showCloseIcon: true,
                 }
               );
@@ -45,11 +38,11 @@ const UserTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
             color="danger"
             onClick={async () => {
               const result = await Confirm(
-                `Are you sure to delete "${link.linkName}" ?`,
+                `Are you sure to delete "${user.userName}" ?`,
                 "Warning"
               );
               if (result) {
-                RemoveLink(link.id);
+                RemoveUser(user.id);
                 window.location.reload(true);
               } else {
                 console.log("Deleting is canceled");

@@ -19,5 +19,21 @@ namespace AcademicVisitServer.DataProcess
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
+
+        public static List<UserInfo> ReadUsers(DataContext dataContext)
+        {
+            var userlist = dataContext.UserInfos.ToList();
+            dataContext.Dispose();
+            return userlist;
+        }
+
+        public static void RemoveUser(DataContext dataContext, int id)
+        {
+            UserInfo userInfo = new UserInfo() { Id = id };
+            dataContext.UserInfos.Attach(userInfo);
+            dataContext.UserInfos.Remove(userInfo);
+            dataContext.SaveChanges();
+            dataContext.Dispose();
+        }
     }
 }

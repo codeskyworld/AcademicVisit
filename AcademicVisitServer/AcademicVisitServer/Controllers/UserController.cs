@@ -21,9 +21,22 @@ namespace AcademicVisitServer.Controllers
         [HttpPost]
         public void PostUser([FromBody] UserInfo userInfo)
         {
-            UserInfo UserInfoReceived = userInfo;
             DBUserProcess.AddUser(userInfo, dataContext);
 
+        }
+
+        [HttpGet]
+        [Route("GetAllId")]
+        public JsonResult GetUsers()
+        {
+
+            return new JsonResult(DBUserProcess.ReadUsers(dataContext));
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteUser(int id)
+        {
+            DBUserProcess.RemoveUser(dataContext, id);
         }
     }
 }

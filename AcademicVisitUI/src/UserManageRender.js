@@ -9,11 +9,10 @@ import {
   Button,
   Table,
 } from "reactstrap";
-import { AddLink, GetLinks } from "./LinkProcess";
 import { Alert } from "react-st-modal";
 import { UserTableRender } from "./UserTableRender";
 import UserTypeDropdown from "./UserTypeDropdown";
-import { UserFilterRender } from "./UserFilterRender";
+import { UserFilterRender } from "./UserFilterDropdown";
 import { AddUser, GetUsers } from "./UserProcess";
 
 const UserManageRender = () => {
@@ -23,9 +22,9 @@ const UserManageRender = () => {
   const [userList, setUserList] = useState([]);
   const [fullUserList, setFullUserList] = useState([]);
 
-  //   useEffect(() => {
-  //     GetUsers(setUserList, setFullUserList);
-  //   }, [userName]);
+  useEffect(() => {
+    GetUsers(setUserList, setFullUserList);
+  }, [userName]);
 
   const AddUserHandler = async () => {
     if (!userName || !userPassword || userType === "Please Select") {
@@ -85,7 +84,6 @@ const UserManageRender = () => {
             AddUserHandler();
             document.getElementById("userName").value = "";
             document.getElementById("userPassword").value = "";
-            document.getElementById("userType").value = "";
           }}
         >
           &nbsp;&nbsp;Add&nbsp;&nbsp;
@@ -101,15 +99,12 @@ const UserManageRender = () => {
           <tr>
             <th>#</th>
             <th>User Name</th>
-            <th>User Address</th>
             <th>User Type</th>
             <th>User Updating Time</th>
             <th>Manipulation</th>
           </tr>
         </thead>
-        <tbody>
-          {UserTableRender(userList, setUserName, setUserPassword, setUserType)}
-        </tbody>
+        <tbody>{UserTableRender(userList, setUserName, setUserType)}</tbody>
       </Table>
     </div>
   );

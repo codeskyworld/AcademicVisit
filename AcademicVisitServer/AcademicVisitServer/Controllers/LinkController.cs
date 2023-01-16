@@ -20,17 +20,16 @@ namespace AcademicVisitServer.Controllers
         [HttpPost]
         public void PostLink([FromBody] LinkInfo linkInfo)
         {
-
             DBLinkProcess.AddLink(linkInfo, dataContext);
         }
 
 
         [HttpGet]
         [Route("GetAllId")]
-        public JsonResult GetLink()
+        public JsonResult GetLinks()
         {
 
-            return new JsonResult(DBLinkProcess.ReadLink(dataContext));
+            return new JsonResult(DBLinkProcess.ReadLinks(dataContext));
         }
 
         [HttpGet]

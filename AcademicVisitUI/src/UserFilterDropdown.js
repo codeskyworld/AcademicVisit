@@ -12,12 +12,12 @@ const UserFilterRender = (props) => {
 
   const FilterClick = (objButton) => {
     if (objButton.target.value === "All") {
-      props.setLinkList(props.fullLinkList);
+      props.setUserList(props.fullUserList);
     } else {
-      const resultFilter = props.fullLinkList.filter(
-        (prop) => prop.linkType === objButton.target.value
+      const resultFilter = props.fullUserList.filter(
+        (prop) => prop.userType === objButton.target.value
       );
-      props.setLinkList(resultFilter);
+      props.setUserList(resultFilter);
     }
   };
 
@@ -26,12 +26,10 @@ const UserFilterRender = (props) => {
   };
 
   const FilterItemsRender = (props) => {
-    const typeFullList = props.fullLinkList.map((prop) => {
-      return prop.linkType;
+    const typeFullList = props.fullUserList.map((prop) => {
+      return prop.userType;
     });
-
     const typeList = RemoveDuplicates(typeFullList);
-
     return typeList.map((type, index) => {
       return (
         <DropdownItem key={index} value={type} onClick={FilterClick}>
@@ -50,12 +48,7 @@ const UserFilterRender = (props) => {
         <DropdownItem value="All" onClick={FilterClick}>
           ALL
         </DropdownItem>
-        <DropdownItem value="GeneralUser" onClick={FilterClick}>
-          General User
-        </DropdownItem>
-        <DropdownItem value="Administrator" onClick={FilterClick}>
-          Administrator
-        </DropdownItem>
+        {FilterItemsRender(props)}
       </DropdownMenu>
     </Dropdown>
   );
