@@ -4,12 +4,29 @@ import Footer from "./Footer";
 import LinkManageRender from "./LinkManageRender";
 import Login from "./Login";
 import UserManageRender from "./UserManageRender";
+import Form from "./Form";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <>
       <Header />
-      <UserManageRender />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Form />}></Route>
+          <Route
+            exact
+            path="/UserManage"
+            element={<UserManageRender />}
+          ></Route>
+          <Route
+            exact
+            path="/LinkManage"
+            element={<LinkManageRender />}
+          ></Route>
+          <Route exact path="/Login" element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </>
   );
