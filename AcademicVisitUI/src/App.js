@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import LinkManageRender from "./LinkManageRender";
 import Login from "./Login";
 import UserManageRender from "./UserManageRender";
-import Form from "./Form";
+import Form from "./HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {

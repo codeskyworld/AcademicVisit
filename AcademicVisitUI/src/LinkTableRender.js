@@ -4,7 +4,7 @@ import { CustomDialog } from "react-st-modal";
 import { LinkDialogContent } from "./LinkDialogContent";
 import { Button } from "reactstrap";
 
-const linkTableRender = (linkList, setLinkName, setLinkAddress, setLinkType) =>
+const linkTableRender = (linkList) =>
   linkList.map((link, index) => {
     return (
       <tr key={index}>

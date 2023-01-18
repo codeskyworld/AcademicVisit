@@ -4,7 +4,7 @@ import { CustomDialog } from "react-st-modal";
 import { UserDialogContent } from "./UserDialogContent";
 import { Button } from "reactstrap";
 
-const UserTableRender = (userList, setUserName, setUserType) =>
+const UserTableRender = (userList) =>
   userList.map((user, index) => {
     return (
       <tr key={index}>

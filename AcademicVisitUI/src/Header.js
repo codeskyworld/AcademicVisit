@@ -34,21 +34,6 @@ const Header = () => {
               About
             </a>
           </li>
-          <li>
-            <a href="#" className="nav-link px-2 link-secondary">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link px-2 link-secondary">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link px-2 link-secondary">
-              About
-            </a>
-          </li>
         </ul>
 
         <div className="col-md-3 text-end">
