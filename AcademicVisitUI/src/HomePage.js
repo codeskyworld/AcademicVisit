@@ -6,10 +6,9 @@ const HomePage = () => {
   const [linkAddress, setLinkAddress] = useState("");
   const [linkType, setLinkType] = useState("");
   const [linkList, setLinkList] = useState([]);
-  const [fullLinkList, setFullLinkList] = useState([]);
 
   useEffect(() => {
-    GetLinks(setLinkList, setFullLinkList);
+    GetLinks(setLinkList);
   }, []);
 
   return (
@@ -65,6 +64,7 @@ const HomePage = () => {
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <div className="container text-center">
             <div className="row">
+              <div className="col">Column</div>
               <div className="col">Column</div>
               <div className="col">Column</div>
               <div className="col">Column</div>

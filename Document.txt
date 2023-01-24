@@ -4,8 +4,10 @@ All the work left
 3 Header display user name, link mangement and user mangement
 4 Search Bar
 
-
-
+need to learn
+useCallback
+useReduce
+Refact using Typescript
 
 
 
