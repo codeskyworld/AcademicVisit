@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GetLinks } from "./LinkProcess";
+import { LinkColumnRender } from "./LinkColumnRender";
+import { FilterLinkType } from "./PublicFunctions";
 
 const HomePage = () => {
   const [linkName, setLinkName] = useState("");
@@ -12,7 +14,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="container-fluid d-flex">
+    <div className="container-fluid d-flex" id="homePage">
       <nav
         id="sidebarMenu"
         className="col-md-3 col-lg-2 d-md-block bg-light collapse"
@@ -61,14 +63,73 @@ const HomePage = () => {
       </nav>
 
       <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
           <div className="container text-center">
-            <div className="row">
-              <div className="col">Column</div>
-              <div className="col">Column</div>
-              <div className="col">Column</div>
-              <div className="col">Column</div>
-              <div className="col">Column</div>
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[0])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[1])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[2])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[3])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[4])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[5])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[6])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[7])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[8])}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+          <div className="container text-center">
+            <div className="columnFormat">
+              {LinkColumnRender(linkList, FilterLinkType(linkList)[9])}
             </div>
           </div>
         </div>

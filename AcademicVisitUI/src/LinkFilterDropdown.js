@@ -5,6 +5,7 @@ import {
   DropdownToggle,
   DropdownMenu,
 } from "reactstrap";
+import { RemoveDuplicates } from "./PublicFunctions";
 
 const LinkFilterDropdown = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -19,10 +20,6 @@ const LinkFilterDropdown = (props) => {
       );
       props.setLinkList(resultFilter);
     }
-  };
-
-  const RemoveDuplicates = (arr) => {
-    return arr.filter((item, index) => arr.indexOf(item) === index);
   };
 
   const FilterItemsRender = (props) => {

@@ -13,6 +13,22 @@ body,
   align-items: center;
 }
 
+#homePage {
+  .columnFormat {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+  }
+
+  .columnFormat > div:nth-child(odd) {
+    background: #ddd;
+    padding: 1em;
+  }
+  a:link {
+    text-decoration: none;
+  }
+}
+
 #EditDialog {
   &,
   .formContainer {
