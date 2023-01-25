@@ -25,21 +25,23 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-secondary">
-              FAQs
+            <a href="/LinkManage" className="nav-link px-2 link-secondary">
+              LinkManage
             </a>
           </li>
           <li>
-            <a href="#" className="nav-link px-2 link-secondary">
-              About
+            <a href="/UserManage" className="nav-link px-2 link-secondary">
+              UserManage
             </a>
           </li>
         </ul>
 
         <div className="col-md-3 text-end">
-          <button type="button" className="btn btn-primary">
-            Login
-          </button>
+          <a href="/Login">
+            <button type="button" className="btn btn-primary">
+              Login
+            </button>
+          </a>
         </div>
       </header>
     </div>

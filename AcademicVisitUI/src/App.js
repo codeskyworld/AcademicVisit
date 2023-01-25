@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import LinkManageRender from "./LinkManageRender";
 import Login from "./Login";
 import UserManageRender from "./UserManageRender";
-import Form from "./HomePage";
+import HomePage from "./HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Form />}></Route>
+          <Route exact path="/" element={<HomePage />}></Route>
           <Route
             exact
             path="/UserManage"
