@@ -80,6 +80,20 @@ body,
   }
 }
 
+#loginWindow {
+  flex: 1 1 auto;
+}
+
+#Footer {
+  .TextForFooter {
+    text-align: center;
+    color: rgb(243, 247, 243);
+  }
+  .sticky-bottom {
+    position: absolute;
+  }
+}
+
 .feather {
   width: 16px;
   height: 16px;

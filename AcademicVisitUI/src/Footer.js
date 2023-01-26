@@ -2,11 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="container-fluid sticky-bottom">
+    <div id="Footer" className="container-fluid bg-dark sticky-bottom">
       <footer className="d-block">
         <br></br>
-        <br></br>
-        <p className="text-center">
+        <p className="TextForFooter">
           ©Copyright 2023 Academic Web Navigation Web Page{" "}
         </p>{" "}
       </footer>

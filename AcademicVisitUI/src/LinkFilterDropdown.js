@@ -23,9 +23,7 @@ const LinkFilterDropdown = (props) => {
   };
 
   const FilterItemsRender = (props) => {
-    const typeFullList = props.fullLinkList.map((prop) => {
-      return prop.linkType;
-    });
+    const typeFullList = props.fullLinkList.map((prop) => prop.linkType);
 
     const typeList = RemoveDuplicates(typeFullList);
 

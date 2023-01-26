@@ -13,6 +13,7 @@ import { AddLink, GetLinks } from "./LinkProcess";
 import { linkTableRender } from "./LinkTableRender";
 import { Alert } from "react-st-modal";
 import { LinkFilterDropdown } from "./LinkFilterDropdown";
+import { CheckLinkListLimitation } from "./PublicFunctions";
 
 const LinkManageRender = () => {
   const [linkName, setLinkName] = useState("");
@@ -29,6 +30,11 @@ const LinkManageRender = () => {
     if (!linkName || !linkAddress || !linkType) {
       Alert(
         "Please input both Link Name, Link Address and Link Type",
+        "Warning"
+      );
+    } else if (!CheckLinkListLimitation(linkList, linkType)) {
+      Alert(
+        "Sorry, the quantity of Link Type cannot be more than 10!",
         "Warning"
       );
     } else {

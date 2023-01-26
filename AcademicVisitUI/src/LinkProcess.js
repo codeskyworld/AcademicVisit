@@ -38,6 +38,7 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
           ),
         }));
         setLinkList(FormalResult);
+        setFullLinkList(FormalResult);
       }
     })
     .catch((error) => alert("Get error is " + error));

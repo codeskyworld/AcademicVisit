@@ -40,4 +40,21 @@ const sortForLinkList = (a, b) => {
   return 0;
 };
 
-export { FilterLinkType, RemoveDuplicates, sortForLinkList };
+const CheckLinkListLimitation = (linkList, newlinkType) => {
+  const resultConvertToLinkType = linkList.map((prop) => prop.linkType);
+  const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);
+  if (uniqueLinkTypelist.length <= 9) {
+    return true;
+  } else if (uniqueLinkTypelist.length === 10) {
+    return uniqueLinkTypelist.includes(newlinkType);
+  } else {
+    return false;
+  }
+};
+
+export {
+  FilterLinkType,
+  RemoveDuplicates,
+  sortForLinkList,
+  CheckLinkListLimitation,
+};
