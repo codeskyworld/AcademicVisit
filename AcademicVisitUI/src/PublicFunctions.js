@@ -1,10 +1,12 @@
 const FilterLinkType = (linkList) => {
   const resultConvertToLinkType = linkList.map((prop) => prop.linkType);
-  if (resultConvertToLinkType.length >= 10) {
+
+  const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);
+  if (uniqueLinkTypelist.length >= 10) {
     console.log("The link type has been more 10!");
     return;
   }
-  const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);
+
   let defaultArrary = [
     "NoValue",
     "NoValue",
@@ -28,4 +30,14 @@ const RemoveDuplicates = (arr) => {
   return arr.filter((item, index) => arr.indexOf(item) === index);
 };
 
-export { FilterLinkType, RemoveDuplicates };
+const sortForLinkList = (a, b) => {
+  if (a.id < b.id) {
+    return -1;
+  }
+  if (a.id > b.id) {
+    return 1;
+  }
+  return 0;
+};
+
+export { FilterLinkType, RemoveDuplicates, sortForLinkList };

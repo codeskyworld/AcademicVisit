@@ -3,9 +3,10 @@ import { Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
 import { LinkDialogContent } from "./LinkDialogContent";
 import { Button } from "reactstrap";
+import { sortForLinkList } from "./PublicFunctions";
 
 const linkTableRender = (linkList) =>
-  linkList.map((link, index) => {
+  linkList.sort(sortForLinkList).map((link, index) => {
     return (
       <tr key={index}>
         <th scope="row">{link.id}</th>
