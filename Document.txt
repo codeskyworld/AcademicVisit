@@ -10,6 +10,8 @@ useReduce
 Refact using Typescript
 
 
+//Jump to a place in HTML
+https://www.w3docs.com/snippets/html/how-to-create-an-anchor-link-to-jump-to-a-specific-part-of-a-page.html
 
 //How to update the structure of database using Entity Framework
 https://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx#:~:text=After%20creating%20a%20migration%20file,applied%20to%20the%20target%20database.

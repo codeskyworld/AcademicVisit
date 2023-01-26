@@ -2,7 +2,7 @@ const FilterLinkType = (linkList) => {
   const resultConvertToLinkType = linkList.map((prop) => prop.linkType);
 
   const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);
-  if (uniqueLinkTypelist.length >= 10) {
+  if (uniqueLinkTypelist.length > 10) {
     console.log("The link type has been more 10!");
     return;
   }
