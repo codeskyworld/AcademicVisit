@@ -1,5 +1,4 @@
 All the work left
-1 Home page display
 2 JWT and Password Encryption
 3 Header display user name, link mangement and user mangement
 4 Search Bar

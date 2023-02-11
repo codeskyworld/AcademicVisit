@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using AcademicVisit.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,26 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+var services = app.Services.GetService<IServiceCollection>();
+var configurations = app.Services.GetService<IConfiguration>();
+services?.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = configurations?["Jwt:Issuer"],
+            ValidAudience = configurations?["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurations?["Jwt:Key"] ?? string.Empty))
+        };
+    });
+services?.AddMvc();
+services?.AddControllers();
+
+
+
 //Enable CORS
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
@@ -27,8 +50,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

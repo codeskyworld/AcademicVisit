@@ -26,7 +26,7 @@ namespace AcademicVisitServer.Controllers
 
         [HttpGet]
         [Route("GetAllId")]
-        public JsonResult GetLinks()
+        public ActionResult GetLinks()
         {
 
             return new JsonResult(DBLinkProcess.ReadLinks(dataContext));
