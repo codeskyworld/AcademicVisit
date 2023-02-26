@@ -3,7 +3,7 @@ import { Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
 import { LinkDialogContent } from "./LinkDialogContent";
 import { Button } from "reactstrap";
-import { sortForLinkList } from "./PublicFunctions";
+import { sortForLinkList } from "../public/Functions";
 
 const linkTableRender = (linkList) =>
   linkList.sort(sortForLinkList).map((link, index) => {

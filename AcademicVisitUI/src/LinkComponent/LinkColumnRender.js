@@ -1,4 +1,4 @@
-import { sortForLinkList } from "./PublicFunctions";
+import { sortForLinkList } from "../public/Functions";
 
 const LinkColumnRender = (linkList, LinkType) =>
   linkList.sort(sortForLinkList).map((link, index) => {

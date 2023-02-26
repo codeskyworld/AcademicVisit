@@ -13,7 +13,7 @@ import { AddLink, GetLinks } from "./LinkProcess";
 import { linkTableRender } from "./LinkTableRender";
 import { Alert } from "react-st-modal";
 import { LinkFilterDropdown } from "./LinkFilterDropdown";
-import { CheckLinkListLimitation } from "./PublicFunctions";
+import { CheckLinkListLimitation } from "../public/Functions";
 
 const LinkManageRender = () => {
   const [linkName, setLinkName] = useState("");

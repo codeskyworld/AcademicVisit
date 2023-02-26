@@ -1,4 +1,5 @@
 ﻿using AcademicVisit.Data;
+using AcademicVisitServer.DataProcess;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace JwtApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class LoginController : Controller
     {
         private IConfiguration _config;
 
@@ -29,46 +30,17 @@ namespace JwtApp.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] UserInfo userInfo)
         {
-            var user = Authenticate(userInfo);
+            var user = JWTProces.AuthenticateLoginInfo(userInfo);
 
             if (user != null)
             {
-                var token = Generate(user);
+                var token = JWTProces.Generate(userInfo, _config);
                 return Ok(token);
             }
 
             return NotFound("User not found");
         }
 
-        private string Generate(UserInfo user)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config?["Jwt:Key"]?? string.Empty));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserName),
-            };
-
-            var token = new JwtSecurityToken(_config?["Jwt:Issuer"],
-              _config?["Jwt:Audience"],
-              claims,
-              expires: DateTime.Now.AddMinutes(15),
-              signingCredentials: credentials);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        private UserInfo Authenticate(UserInfo userLogin)
-        {
-            var currentUser = new UserInfo();
-
-            if (currentUser != null)
-            {
-                return currentUser;
-            }
-
-            return null;
-        }
     }
 }

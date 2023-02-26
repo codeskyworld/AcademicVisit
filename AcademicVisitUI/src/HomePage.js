@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { GetLinks } from "./LinkProcess";
-import { LinkColumnRender } from "./LinkColumnRender";
-import { FilterLinkType } from "./PublicFunctions";
+import { GetLinks } from "./LinkComponent/LinkProcess";
+import { LinkColumnRender } from "./LinkComponent/LinkColumnRender";
+import { FilterLinkType } from "./public/Functions";
 import HomeNavRender from "./HomeNavRender";
 
 const HomePage = () => {

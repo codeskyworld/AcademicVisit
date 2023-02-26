@@ -5,7 +5,7 @@ import {
   DropdownToggle,
   DropdownMenu,
 } from "reactstrap";
-import { RemoveDuplicates } from "./PublicFunctions";
+import { RemoveDuplicates } from "../public/Functions";
 
 const LinkFilterDropdown = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

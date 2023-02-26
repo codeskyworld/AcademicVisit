@@ -1,39 +1,11 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Col } from "reactstrap";
-import { Alert } from "react-st-modal";
-import axios from "axios";
+import { LoginHandler } from "./LoginComponent/LoginProcee";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authentication, setAuthentication] = useState(false);
-
-  const LoginHandler = async (e) => {
-    e.preventDefault();
-    await axios
-      .post(
-        "http://localhost:5271/login",
-        {
-          Email: email,
-          Password: password,
-        },
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("email that will be storing is " + email);
-          localStorage.setItem("email", email);
-          setAuthentication(true);
-          window.location.reload();
-        }
-      })
-      .catch((error) => Alert("Incorrect email or password", "Warning"));
-  };
 
   if (authentication) return;
   return (
@@ -79,7 +51,7 @@ const Login = () => {
           <button
             id="check"
             className="btn btn-outline-primary btn-lg w-100"
-            onClick={LoginHandler}
+            onClick={LoginHandler(email, password, setAuthentication)}
           >
             Login
           </button>

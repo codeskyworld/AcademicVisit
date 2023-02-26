@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import LinkManageRender from "./LinkManageRender";
+import LinkManageRender from "./LinkComponent/LinkManageRender";
 import Login from "./Login";
-import UserManageRender from "./UserManageRender";
+import UserManageRender from "./UserComponent/UserManageRender";
 import HomePage from "./HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
