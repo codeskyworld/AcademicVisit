@@ -11,7 +11,7 @@ namespace AcademicVisitServer.DataProcess
             userList.Add(new UserInfo()
             {
                 UserName = userInfo.UserName,
-                UserPassword = userInfo.UserPassword,
+                UserPassword = PasswordProcess.EncodePasswordToBase64(userInfo.UserPassword),
                 UserType = userInfo.UserType,
                 UserUpdatingTime = DateTimeExtensions.SetKindUtcWay(userInfo.UserUpdatingTime)
             });
@@ -42,7 +42,7 @@ namespace AcademicVisitServer.DataProcess
             if (result != null)
             {
                 result.UserName = userInfo.UserName;
-                result.UserPassword = userInfo.UserPassword;
+                result.UserPassword = PasswordProcess.EncodePasswordToBase64(userInfo.UserPassword);
                 result.UserType = userInfo.UserType;
                 result.UserUpdatingTime = DateTimeExtensions.SetKindUtcWay(userInfo.UserUpdatingTime);
             }

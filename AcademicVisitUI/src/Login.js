@@ -1,13 +1,41 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Col } from "reactstrap";
-import { LoginHandler } from "./LoginComponent/LoginProcee";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authentication, setAuthentication] = useState(false);
 
-  if (authentication) return;
+  const LoginHandler = async (e) => {
+    e.preventDefault();
+    window.open("/");
+    // await axios
+    //   .post(
+    //     "http://localhost:5271/login",
+    //     {},
+    //     {
+    //       headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     window.open("/");
+
+    //     // if (res.status === 200) {
+    //     //   //localStorage.setItem("email", email);
+    //     //   setAuthentication(true);
+
+    //     //   window.open("/");
+    //     // } else {
+    //     //   window.open("/");
+    //     // }
+    //   })
+    //   .catch((error) => Alert("Incorrect email or password", "Warning"));
+  };
+
+  //if (authentication) return;
   return (
     <div
       id="loginWindow"
@@ -51,7 +79,7 @@ const Login = () => {
           <button
             id="check"
             className="btn btn-outline-primary btn-lg w-100"
-            onClick={LoginHandler(email, password, setAuthentication)}
+            onClick={LoginHandler}
           >
             Login
           </button>

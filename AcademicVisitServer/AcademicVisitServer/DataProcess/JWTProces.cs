@@ -20,7 +20,7 @@ namespace AcademicVisitServer.DataProcess
             
             if (currentUser != null)
             {
-
+                return null;
             }
 
             return null;
