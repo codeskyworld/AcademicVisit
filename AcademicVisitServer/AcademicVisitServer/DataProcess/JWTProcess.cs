@@ -6,26 +6,8 @@ using System.Text;
 
 namespace AcademicVisitServer.DataProcess
 {
-    public static class JWTProces
+    public static class JWTProcess
     {
-        public static string AuthenticateLoginInfo(UserInfo userLogin)
-        {
-            var currentUser = new UserInfo();
-
-        //If user name doesn't exist in the database
-            if (currentUser == null)
-            {
-                return "user name doesn't exist in the database";
-            }
-            
-            if (currentUser != null)
-            {
-                return null;
-            }
-
-            return null;
-        }
-
         public static string Generate(UserInfo user, IConfiguration _config)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config?["Jwt:Key"] ?? string.Empty));
@@ -45,17 +27,8 @@ namespace AcademicVisitServer.DataProcess
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public static bool CheckloginUserName()
-        {
-            return false;
-        }
 
-        public static bool CheckloginPassword()
-        {
-            return false;
-        }
-
-        public static bool CheckTokenExistance() 
+        public static bool CheckTokenExistance()
         {
             return false;
         }
@@ -66,16 +39,6 @@ namespace AcademicVisitServer.DataProcess
         }
 
         public static bool GenerateNewToken()
-        {
-            return false;
-        }
-
-        public static bool EncryptPassword()
-        {
-            return false;
-        }
-
-        public static bool DecryptPassword()
         {
             return false;
         }

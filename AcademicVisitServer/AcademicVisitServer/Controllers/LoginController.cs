@@ -13,34 +13,45 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtApp.Controllers
+
+namespace AcademicVisitServer.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class LoginController : Controller
     {
-        private IConfiguration _config;
+        private IConfiguration config;
+        private readonly DataContext dataContext;
 
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration _config, DataContext _dataContext)
         {
-            _config = config;
+            config = _config;
+            dataContext = _dataContext;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody] UserInfo userInfo)
         {
-            var user = JWTProces.AuthenticateLoginInfo(userInfo);
+            bool resultCheckUserName = LoginProces.CheckloginUserName(userInfo, dataContext);
 
-            if (user != null)
-            {
-                var token = JWTProces.Generate(userInfo, _config);
-                return Ok(token);
+            if (!resultCheckUserName) {
+                return Ok("User not found");
             }
 
-            return NotFound("User not found");
+            bool resultCheckPassword = LoginProces.CheckloginPassword(userInfo, dataContext);
+
+            if (!resultCheckPassword)
+            {
+                return Ok("Password is incorrect");
+            }
+
+            return Ok("Login successfully");
+
+            //if (user != null)
+            //{
+            //    var token = LoginProces.Generate(userInfo, _config);
+            //    return Ok(token);
+            //}
         }
-
-
     }
 }

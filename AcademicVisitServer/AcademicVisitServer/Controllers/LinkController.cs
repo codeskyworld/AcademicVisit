@@ -11,9 +11,9 @@ namespace AcademicVisitServer.Controllers
     {
         private readonly DataContext dataContext;
 
-        public LinkController(DataContext dataContext)
+        public LinkController(DataContext _dataContext)
         {
-            this.dataContext = dataContext;
+            dataContext = _dataContext;
         }
 
 
