@@ -1,5 +1,6 @@
 ﻿using AcademicVisit.Data;
 using AcademicVisitServer.DataProcess;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,13 +46,8 @@ namespace AcademicVisitServer.Controllers
                 return Ok("Password is incorrect");
             }
 
-            return Ok("Login successfully");
-
-            //if (user != null)
-            //{
-            //    var token = LoginProces.Generate(userInfo, _config);
-            //    return Ok(token);
-            //}
+            string token = JWTProcess.Generate(userInfo, config);
+            return Ok(token);
         }
     }
 }

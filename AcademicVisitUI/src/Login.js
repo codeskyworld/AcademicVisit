@@ -28,9 +28,6 @@ const Login = () => {
       .then((res) => {
         if (res.status === 200) {
           switch (res.data) {
-            case "Login successfully":
-              window.open("/");
-              break;
             case "User not found":
               Alert("User not found", "Warning");
               break;
@@ -38,7 +35,8 @@ const Login = () => {
               Alert("Password is incorrect", "Warning");
               break;
             default:
-              Alert("It must be an issue happened in login handler", "Warning");
+              localStorage.setItem("token", res.data);
+              window.open("/");
           }
         } else {
           Alert("An error occurred when to login !", "Warning");

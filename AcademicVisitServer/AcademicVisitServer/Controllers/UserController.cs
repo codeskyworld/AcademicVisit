@@ -10,39 +10,61 @@ namespace AcademicVisitServer.Controllers
     public class UserController : Controller
     {
 
-
+        private IConfiguration config;
         private readonly DataContext dataContext;
 
-        public UserController(DataContext dataContext)
+        public UserController(IConfiguration _config, DataContext dataContext)
         {
+            config = _config;
             this.dataContext = dataContext;
         }
 
         [HttpPost]
-        public void PostUser([FromBody] UserInfo userInfo)
+        public IActionResult PostUser([FromBody] UserInfo userInfo)
         {
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             DBUserProcess.AddUser(userInfo, dataContext);
-
+            return Ok("Token is valid");
         }
 
         [HttpGet]
         [Route("GetAllId")]
-        public JsonResult GetUsers()
+        public IActionResult GetUsers()
         {
-
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             return new JsonResult(DBUserProcess.ReadUsers(dataContext));
         }
 
         [HttpDelete("{id}")]
-        public void DeleteUser(int id)
+        public IActionResult DeleteUser(int id)
         {
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             DBUserProcess.RemoveUser(dataContext, id);
+            return Ok("Token is valid");
         }
 
         [HttpPut]
-        public void EditUser([FromBody] UserInfo userInfo)
+        public IActionResult EditUser([FromBody] UserInfo userInfo)
         {
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             DBUserProcess.ModifyUser(userInfo, dataContext);
+            return Ok("Token is valid");
         }
     }
 }

@@ -8,14 +8,14 @@ namespace AcademicVisitServer.DataProcess
 {
     public static class JWTProcess
     {
-        public static string Generate(UserInfo user, IConfiguration _config)
+        public static string Generate(UserInfo userInfo, IConfiguration _config)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config?["Jwt:Key"] ?? string.Empty));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, userInfo.UserName),
             };
 
             var token = new JwtSecurityToken(_config?["Jwt:Issuer"],
@@ -28,19 +28,61 @@ namespace AcademicVisitServer.DataProcess
         }
 
 
-        public static bool CheckTokenExistance()
+        public static bool IsTokenIsExisting(string? token)
         {
-            return false;
+            if (string.IsNullOrEmpty(token))
+            {
+                return false;
+            }
+            else if (token == "No token exists")
+            {
+                return false;
+            }
+            else
+                return true;
         }
 
-        public static bool CheckTokenValidation()
+
+
+        public static bool IsTokenValid(string? token, IConfiguration _config)
         {
-            return false;
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config?["Jwt:Key"] ?? string.Empty));
+
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = securityKey,
+                    ValidateIssuer = true,
+                    ValidIssuer = _config?["Jwt:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = _config?["Jwt:Audience"],
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public static bool GenerateNewToken()
+        public static bool checkToken(string? accessToken, IConfiguration _config)
         {
-            return false;
+            if (!JWTProcess.IsTokenIsExisting(accessToken))
+            {
+                return false;
+            }
+
+            if (!JWTProcess.IsTokenValid(accessToken, _config))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
