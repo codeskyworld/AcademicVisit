@@ -13,6 +13,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 
 namespace AcademicVisitServer.Controllers
@@ -34,20 +35,28 @@ namespace AcademicVisitServer.Controllers
         public IActionResult Login([FromBody] UserInfo userInfo)
         {
             bool resultCheckUserName = LoginProces.CheckloginUserName(userInfo, dataContext);
-
-            if (!resultCheckUserName) {
-                return Ok("User not found");
+            if (!resultCheckUserName)
+            {
+                string resultName = "User not found";
+                return new JsonResult(new { reult = resultName });
             }
-
             bool resultCheckPassword = LoginProces.CheckloginPassword(userInfo, dataContext);
-
             if (!resultCheckPassword)
             {
-                return Ok("Password is incorrect");
+                string resultPassword = "Password is incorrect";
+                return new JsonResult(new { retult = resultPassword });
+            }
+            if (string.IsNullOrWhiteSpace(DBUserProcess.GetUserType(userInfo, dataContext)))
+            {
+                string resultUserType = "Error happened, the user type is wrong";
+                return new JsonResult(new { result = resultUserType });
             }
 
-            string token = JWTProcess.Generate(userInfo, config);
-            return Ok(token);
+            string? resultToken = "This is token";
+            string? userType = DBUserProcess.GetUserType(userInfo, dataContext);
+            string? token = JWTProcess.Generate(userInfo, config);
+
+            return new JsonResult(new { result= resultToken, userType= userType, token = token });
         }
     }
 }

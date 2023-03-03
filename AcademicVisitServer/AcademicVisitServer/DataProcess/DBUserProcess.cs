@@ -49,5 +49,16 @@ namespace AcademicVisitServer.DataProcess
             dataContext.SaveChanges();
             dataContext.Dispose();
         }
+
+        public static string? GetUserType(UserInfo userInfo, DataContext dataContext)
+        {
+            var result = dataContext.UserInfos.FirstOrDefault(x => x.UserName == userInfo.UserName);
+            if (result != null)
+            {
+                return result.UserType;
+            }
+            else
+                return null;
+        }
     }
 }

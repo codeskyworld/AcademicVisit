@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetLinksOnlyForHomePage } from "./LinkComponent/LinkProcess";
 import { LinkColumnRender } from "./LinkComponent/LinkColumnRender";
 import { FilterLinkType } from "./public/Functions";
-import HomeNavRender from "./HomeNavRender";
+import HomeNavRender from "./public/HomeNavRender";
 
 const HomePage = () => {
   const [linkList, setLinkList] = useState([]);

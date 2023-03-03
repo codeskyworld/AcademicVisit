@@ -50,6 +50,10 @@ const AddUser = async (userName, userPassword, userType) => {
 };
 
 const GetUsers = async (setUserList, setFullUserList) => {
+  let userType = localStorage.getItem("userType");
+  if (userType !== "Administrator") {
+    window.location.href = "/";
+  }
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
     token = "No token exists";

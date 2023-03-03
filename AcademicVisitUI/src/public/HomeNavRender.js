@@ -1,4 +1,4 @@
-import { RemoveDuplicates } from "./public/Functions";
+import { RemoveDuplicates } from "./Functions";
 const HomeNavRender = (props) => {
   const resultConvertToLinkType = props.linkList.map((link) => link.linkType);
   const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);

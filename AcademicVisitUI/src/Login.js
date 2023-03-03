@@ -27,17 +27,23 @@ const Login = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          switch (res.data) {
+          switch (res.data.result) {
             case "User not found":
               Alert("User not found", "Warning");
               break;
             case "Password is incorrect":
               Alert("Password is incorrect", "Warning");
               break;
-            default:
-              localStorage.setItem("token", res.data);
-              localStorage.setItem("MarkForLogin", "MarkForLogin");
+            case "Error happened, the user type is wrong":
+              Alert("Error happened, the user type is wrong", "Warning");
+              break;
+            case "This is token":
+              localStorage.setItem("token", res.data.token);
+              localStorage.setItem("userType", res.data.userType);
               window.location.href = "/";
+              break;
+            default:
+              Alert("Error happened in login", "Warning");
           }
         } else {
           Alert("An error occurred when to login !", "Warning");

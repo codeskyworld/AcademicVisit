@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  DisplayLogComponent,
+  DisplayLinkManange,
+  DisplayAllManange,
+} from "./public/HeaderComponent";
 const Header = () => {
   return (
     <div id="Header" className="container-fluid sticky-top bg-dark">
@@ -39,26 +44,10 @@ const Header = () => {
               Research
             </a>
           </li>
-
-          <li>
-            <a href="/LinkManage" className="nav-link px-2 text-white">
-              LinkManage
-            </a>
-          </li>
-          <li>
-            <a href="/UserManage" className="nav-link px-2 text-white">
-              UserManage
-            </a>
-          </li>
+          <DisplayLinkManange />
+          <DisplayAllManange />
         </ul>
-
-        <div className="col-md-3 text-end">
-          <a href="/Login">
-            <button type="button" className="btn btn-primary">
-              Login
-            </button>
-          </a>
-        </div>
+        <DisplayLogComponent />
       </header>
     </div>
   );
