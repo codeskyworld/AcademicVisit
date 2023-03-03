@@ -55,6 +55,7 @@ const CheckLinkListLimitation = (linkList, newlinkType) => {
 const Logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userType");
+  localStorage.removeItem("userName");
   window.location.href = "/";
 };
 

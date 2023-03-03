@@ -40,6 +40,7 @@ const Login = () => {
             case "This is token":
               localStorage.setItem("token", res.data.token);
               localStorage.setItem("userType", res.data.userType);
+              localStorage.setItem("userName", userName);
               window.location.href = "/";
               break;
             default:
