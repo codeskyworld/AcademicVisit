@@ -36,6 +36,7 @@ const Login = () => {
               break;
             default:
               localStorage.setItem("token", res.data);
+              localStorage.setItem("MarkForLogin", "MarkForLogin");
               window.location.href = "/";
           }
         } else {

@@ -37,11 +37,14 @@ namespace AcademicVisitServer.Controllers
         public IActionResult GetLinks()
         {
             string? accessToken = Request.Headers["Authorization"];
-            if (!JWTProcess.checkToken(accessToken, config))
+            if ((string.Compare(accessToken, "This is Home page") == 0) || JWTProcess.checkToken(accessToken, config))
+            {
+                return new JsonResult(DBLinkProcess.ReadLinks(dataContext));
+            }
+            else
             {
                 return Ok("Need to login");
             }
-            return new JsonResult(DBLinkProcess.ReadLinks(dataContext));
         }
 
         [HttpDelete("{id}")]

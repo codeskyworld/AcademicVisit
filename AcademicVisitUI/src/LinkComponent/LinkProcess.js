@@ -87,6 +87,37 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
     .catch((error) => alert("Get Link error is " + error));
 };
 
+const GetLinksOnlyForHomePage = async (setLinkList, setFullLinkList) => {
+  let token = "This is Home page";
+  await axios
+    .get("http://localhost:5271/Link/GetAllId", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        var FormalResult = res.data.map((k) => ({
+          ...k,
+          linkUpdatingTime: moment(k.linkUpdatingTime).format(
+            "YYYY-MM-DD HH:mm:ss"
+          ),
+        }));
+        setLinkList(FormalResult);
+        setFullLinkList(FormalResult);
+      } else {
+        Alert(
+          "An error occurred in the GetLinksOnlyForHomePage! And the status is not 200!",
+          "Warning"
+        );
+        return;
+      }
+    })
+    .catch((error) => alert("Get Link error is " + error));
+};
+
 const RemoveLink = async (id) => {
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
@@ -173,4 +204,4 @@ const EditLink = async (linkId, linkName, linkAddress, linkType) => {
     .catch((error) => alert("Edit Link error is " + error));
 };
 
-export { AddLink, GetLinks, RemoveLink, EditLink };
+export { AddLink, GetLinks, GetLinksOnlyForHomePage, RemoveLink, EditLink };

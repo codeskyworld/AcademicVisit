@@ -13,6 +13,8 @@ const Header = () => {
             <a
               href="https://en.wikipedia.org/wiki/Academy"
               className="nav-link px-2 text-white"
+              target="_blank"
+              rel="noreferrer"
             >
               Academic
             </a>
@@ -21,6 +23,8 @@ const Header = () => {
             <a
               href="https://www.science.org/"
               className="nav-link px-2 text-white"
+              target="_blank"
+              rel="noreferrer"
             >
               Science
             </a>
@@ -29,6 +33,8 @@ const Header = () => {
             <a
               href="https://researchaustralia.org/"
               className="nav-link px-2  text-white"
+              target="_blank"
+              rel="noreferrer"
             >
               Research
             </a>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GetLinks } from "./LinkComponent/LinkProcess";
+import { GetLinksOnlyForHomePage } from "./LinkComponent/LinkProcess";
 import { LinkColumnRender } from "./LinkComponent/LinkColumnRender";
 import { FilterLinkType } from "./public/Functions";
 import HomeNavRender from "./HomeNavRender";
@@ -9,7 +9,7 @@ const HomePage = () => {
   const [fullLinkList, setFullLinkList] = useState([]);
 
   useEffect(() => {
-    GetLinks(setLinkList, setFullLinkList);
+    GetLinksOnlyForHomePage(setLinkList, setFullLinkList);
   }, []);
 
   return (
