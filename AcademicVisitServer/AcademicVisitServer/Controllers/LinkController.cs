@@ -9,39 +9,63 @@ namespace AcademicVisitServer.Controllers
     [Route("[controller]")]
     public class LinkController : Controller
     {
+        private IConfiguration config;
         private readonly DataContext dataContext;
 
-        public LinkController(DataContext _dataContext)
+        public LinkController(IConfiguration _config, DataContext _dataContext)
         {
+            config = _config;
             dataContext = _dataContext;
         }
 
 
         [HttpPost]
-        public void PostLink([FromBody] LinkInfo linkInfo)
+        public IActionResult PostLink([FromBody] LinkInfo linkInfo)
         {
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             DBLinkProcess.AddLink(linkInfo, dataContext);
+            return Ok("Token is valid");
         }
 
 
         [HttpGet]
         [Route("GetAllId")]
-        public ActionResult GetLinks()
+        public IActionResult GetLinks()
         {
-
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             return new JsonResult(DBLinkProcess.ReadLinks(dataContext));
         }
 
         [HttpDelete("{id}")]
-        public void DeleteLink(int id)
+        public IActionResult DeleteLink(int id)
         {
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             DBLinkProcess.RemoveLink(dataContext, id);
+            return Ok("Token is valid");
         }
 
         [HttpPut]
-        public void EditLink([FromBody] LinkInfo linkInfo)
+        public IActionResult EditLink([FromBody] LinkInfo linkInfo)
         {
+            string? accessToken = Request.Headers["Authorization"];
+            if (!JWTProcess.checkToken(accessToken, config))
+            {
+                return Ok("Need to login");
+            }
             DBLinkProcess.ModifyLink(linkInfo, dataContext);
+            return Ok("Token is valid");
         }
     }
 }

@@ -36,7 +36,7 @@ const Login = () => {
               break;
             default:
               localStorage.setItem("token", res.data);
-              window.open("/");
+              window.location.href = "/";
           }
         } else {
           Alert("An error occurred when to login !", "Warning");

@@ -13,10 +13,10 @@ namespace AcademicVisitServer.Controllers
         private IConfiguration config;
         private readonly DataContext dataContext;
 
-        public UserController(IConfiguration _config, DataContext dataContext)
+        public UserController(IConfiguration _config, DataContext _dataContext)
         {
             config = _config;
-            this.dataContext = dataContext;
+            dataContext = _dataContext;
         }
 
         [HttpPost]
