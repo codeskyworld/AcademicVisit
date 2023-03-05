@@ -3,6 +3,7 @@ import { GetLinksOnlyForHomePage } from "./LinkComponent/LinkProcess";
 import { LinkColumnRender } from "./LinkComponent/LinkColumnRender";
 import { FilterLinkType } from "./public/Functions";
 import HomeNavRender from "./public/HomeNavRender";
+import { SearchBar } from "./public/SearchBar";
 
 const HomePage = () => {
   const [linkList, setLinkList] = useState([]);
@@ -42,6 +43,7 @@ const HomePage = () => {
       </nav>
 
       <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <SearchBar />
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
           <div className="container text-center">
             <div id={FilterLinkType(fullLinkList)[0]} className="columnFormat">
