@@ -1,4 +1,4 @@
-const FilterLinkType = (linkList) => {
+const FilterLinkType = (linkList, typeClick) => {
   const resultConvertToLinkType = linkList.map((prop) => prop.linkType);
 
   const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);
@@ -23,6 +23,22 @@ const FilterLinkType = (linkList) => {
   for (i = 0; i < uniqueLinkTypelist.length; i++) {
     defaultArrary[i] = uniqueLinkTypelist[i];
   }
+  if (typeClick !== "NoValue") {
+    let ArraryForClick = [
+      typeClick,
+      "NoValue",
+      "NoValue",
+      "NoValue",
+      "NoValue",
+      "NoValue",
+      "NoValue",
+      "NoValue",
+      "NoValue",
+      "NoValue",
+    ];
+    return ArraryForClick;
+  }
+
   return defaultArrary;
 };
 

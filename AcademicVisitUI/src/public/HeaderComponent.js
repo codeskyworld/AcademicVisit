@@ -11,7 +11,7 @@ const DisplayLogComponent = () => {
       </button>
     </div>
   ) : (
-    <div className="d-flex col-md-3 justify-content-end align-items-center">
+    <div className="d-flex col-md-5 col-lg-5 justify-content-end align-items-center mx-1">
       <a href="/Login">
         <button type="button" className="btn btn-primary">
           Login

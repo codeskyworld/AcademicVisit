@@ -4,8 +4,11 @@ const HomeNavRender = (props) => {
   const uniqueLinkTypelist = RemoveDuplicates(resultConvertToLinkType);
 
   return uniqueLinkTypelist.map((type, index) => (
-    <li className="nav-item" key={index}>
-      <a className="nav-link" href={"#" + type}>
+    <li className="nav-item d-flex justify-content-start mx-2" key={index}>
+      <button
+        className="btn btn-light"
+        onClick={() => props.setTypeClick(type)}
+      >
         <span className="align-text-bottom"></span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +26,7 @@ const HomeNavRender = (props) => {
           <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
         </svg>{" "}
         &nbsp;{type}
-      </a>
+      </button>
     </li>
   ));
 };
