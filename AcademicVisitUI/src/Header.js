@@ -16,6 +16,16 @@ const Header = () => {
           </li>
           <li>
             <a
+              href="/search"
+              className="nav-link px-2  text-white"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Search
+            </a>
+          </li>
+          <li>
+            <a
               href="https://en.wikipedia.org/wiki/Academy"
               className="nav-link px-2 text-white"
               target="_blank"
@@ -32,16 +42,6 @@ const Header = () => {
               rel="noreferrer"
             >
               Science
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://researchaustralia.org/"
-              className="nav-link px-2  text-white"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Research
             </a>
           </li>
           <DisplayLinkManange />

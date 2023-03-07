@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
     await axios
       .post(
-        "http://localhost:5271/Login",
+        "http://localhost:5271/login",
         {
           UserName: userName,
           UserPassword: password,

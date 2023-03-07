@@ -28,7 +28,7 @@ const DisplayLinkManange = () => {
   return userType === "General User" ? (
     <div className="d-flex col-md-3 text-end">
       <li>
-        <a href="/LinkManage" className="nav-link px-2 text-white">
+        <a href="/linkManage" className="nav-link px-2 text-white">
           LinkManage
         </a>
       </li>
@@ -41,12 +41,12 @@ const DisplayAllManange = () => {
   return userType === "Administrator" ? (
     <div className="d-flex col-md-3 text-end">
       <li>
-        <a href="/LinkManage" className="nav-link px-2 text-white">
+        <a href="/linkManage" className="nav-link px-2 text-white">
           LinkManage
         </a>
       </li>
       <li>
-        <a href="/UserManage" className="nav-link px-2 text-white">
+        <a href="/userManage" className="nav-link px-2 text-white">
           UserManage
         </a>
       </li>
