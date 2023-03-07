@@ -40,7 +40,7 @@ const UserManageRender = () => {
 
   return (
     <div id="UserEdition" className="container mt-4 mb-auto">
-      <Form className="mb-1">
+      <Form>
         <Row>
           <Col md={3}>
             <FormGroup>

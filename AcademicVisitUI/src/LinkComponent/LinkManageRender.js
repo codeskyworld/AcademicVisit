@@ -45,7 +45,7 @@ const LinkManageRender = () => {
 
   return (
     <div id="LinkEdition" className="container mt-4 mb-auto">
-      <Form className="mb-3">
+      <Form>
         <Row>
           <Col md={3}>
             <FormGroup>

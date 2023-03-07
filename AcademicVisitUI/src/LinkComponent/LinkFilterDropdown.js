@@ -37,7 +37,7 @@ const LinkFilterDropdown = (props) => {
   };
 
   return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+    <Dropdown isOpen={dropdownOpen} toggle={toggle} className="mb-3">
       <DropdownToggle caret size="md">
         Filter
       </DropdownToggle>
