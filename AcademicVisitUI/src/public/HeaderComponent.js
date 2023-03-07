@@ -5,7 +5,9 @@ const DisplayLogComponent = () => {
   let userName = localStorage.getItem("userName");
   return userType === "General User" || userType === "Administrator" ? (
     <div className="d-flex col-md-3 justify-content-end align-items-center">
-      <h8 className="text-white">Hello, {userName}&nbsp;&nbsp;&nbsp;&nbsp;</h8>
+      <div className="text-white ">
+        Hello, {userName}&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
       <button type="button" className="btn btn-primary" onClick={Logout}>
         Logout
       </button>

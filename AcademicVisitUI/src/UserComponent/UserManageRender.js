@@ -40,9 +40,9 @@ const UserManageRender = () => {
 
   return (
     <div id="UserEdition" className="container mt-4 mb-auto">
-      <Form className="mb-3">
+      <Form className="mb-1">
         <Row>
-          <Col md={4}>
+          <Col md={3}>
             <FormGroup>
               <Label for="userName">User Name</Label>
               <Input
@@ -56,7 +56,7 @@ const UserManageRender = () => {
               />
             </FormGroup>
           </Col>
-          <Col md={4}>
+          <Col md={3}>
             <FormGroup>
               <Label for="userPassword">User Password</Label>
               <Input
@@ -70,24 +70,27 @@ const UserManageRender = () => {
               />
             </FormGroup>
           </Col>
-          <Col md={4}>
+          <Col md={2}>
             <FormGroup>
               <Label for="userType">User Type</Label>
               <UserTypeDropdown userType={userType} setUserType={setUserType} />
             </FormGroup>
           </Col>
+          <Col md={4} className="py-2 my-4">
+            <FormGroup>
+              <Button
+                color="primary"
+                onClick={() => {
+                  AddUserHandler();
+                  document.getElementById("userName").value = "";
+                  document.getElementById("userPassword").value = "";
+                }}
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </Button>
+            </FormGroup>
+          </Col>
         </Row>
-
-        <Button
-          color="primary"
-          onClick={() => {
-            AddUserHandler();
-            document.getElementById("userName").value = "";
-            document.getElementById("userPassword").value = "";
-          }}
-        >
-          &nbsp;&nbsp;Add&nbsp;&nbsp;
-        </Button>
       </Form>
       <UserFilterRender
         userList={userList}

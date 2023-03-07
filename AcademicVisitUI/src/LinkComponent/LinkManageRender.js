@@ -47,7 +47,7 @@ const LinkManageRender = () => {
     <div id="LinkEdition" className="container mt-4 mb-auto">
       <Form className="mb-3">
         <Row>
-          <Col md={4}>
+          <Col md={3}>
             <FormGroup>
               <Label for="linkName">Link Name</Label>
               <Input
@@ -61,7 +61,7 @@ const LinkManageRender = () => {
               />
             </FormGroup>
           </Col>
-          <Col md={4}>
+          <Col md={3}>
             <FormGroup>
               <Label for="linkAddress">Link Address</Label>
               <Input
@@ -75,7 +75,7 @@ const LinkManageRender = () => {
               />
             </FormGroup>
           </Col>
-          <Col md={4}>
+          <Col md={3}>
             <FormGroup>
               <Label for="linkType">Link Type</Label>
               <Input
@@ -89,19 +89,22 @@ const LinkManageRender = () => {
               />
             </FormGroup>
           </Col>
+          <Col md={3} className="py-4 my-2 px-4">
+            <FormGroup>
+              <Button
+                color="primary"
+                onClick={() => {
+                  AddLinkHandler();
+                  document.getElementById("linkName").value = "";
+                  document.getElementById("linkAddress").value = "";
+                  document.getElementById("linkType").value = "";
+                }}
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </Button>
+            </FormGroup>
+          </Col>
         </Row>
-
-        <Button
-          color="primary"
-          onClick={() => {
-            AddLinkHandler();
-            document.getElementById("linkName").value = "";
-            document.getElementById("linkAddress").value = "";
-            document.getElementById("linkType").value = "";
-          }}
-        >
-          &nbsp;&nbsp;Add&nbsp;&nbsp;
-        </Button>
       </Form>
       <LinkFilterDropdown
         linkList={linkList}
