@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetLinksOnlyForHomePage } from "./LinkComponent/LinkProcess";
 import { LinkColumnRender } from "./LinkComponent/LinkColumnRender";
 import { FilterLinkType } from "./public/Functions";
-import HomeNavRender from "./public/HomeNavRender";
+import SearchNavRender from "./public/SearchNavRender";
 import { SearchBar } from "./public/SearchBar";
 
 const SearchPage = () => {
@@ -18,7 +18,7 @@ const SearchPage = () => {
     <div className="container-fluid d-flex" id="homePage">
       <nav
         id="sidebarMenu"
-        className="col-md-2 col-lg-1 d-md-block bg-light collapse py-4"
+        className="col-lg-2 col-md-2 col-lg-2 d-md-block bg-light collapse py-4"
       >
         <div className="position-sticky pt-3 sidebar-sticky">
           <ul className="nav flex-column">
@@ -41,7 +41,7 @@ const SearchPage = () => {
                 &nbsp;&nbsp;SearchList
               </button>
             </li>
-            <HomeNavRender linkList={linkList} setTypeClick={setTypeClick} />
+            <SearchNavRender linkList={linkList} setTypeClick={setTypeClick} />
           </ul>
         </div>
       </nav>
