@@ -32,6 +32,11 @@ const DisplayLinkManange = () => {
           LinkManage
         </a>
       </li>
+      <li>
+        <a href="/SearchManage" className="nav-link px-2 text-white">
+          SearchManage
+        </a>
+      </li>
     </div>
   ) : null;
 };
@@ -43,6 +48,11 @@ const DisplayAllManange = () => {
       <li>
         <a href="/linkManage" className="nav-link px-2 text-white">
           LinkManage
+        </a>
+      </li>
+      <li>
+        <a href="/searchManage" className="nav-link px-2 text-white">
+          SearchManage
         </a>
       </li>
       <li>

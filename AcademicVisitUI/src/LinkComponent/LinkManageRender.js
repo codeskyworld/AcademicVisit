@@ -10,7 +10,7 @@ import {
   Table,
 } from "reactstrap";
 import { AddLink, GetLinks } from "./LinkProcess";
-import { linkTableRender } from "./LinkTableRender";
+import { LinkTableRender } from "./LinkTableRender";
 import { Alert } from "react-st-modal";
 import { LinkFilterDropdown } from "./LinkFilterDropdown";
 import { CheckLinkListLimitation } from "../public/Functions";
@@ -123,7 +123,7 @@ const LinkManageRender = () => {
           </tr>
         </thead>
         <tbody>
-          {linkTableRender(linkList, setLinkName, setLinkAddress, setLinkType)}
+          {LinkTableRender(linkList, setLinkName, setLinkAddress, setLinkType)}
         </tbody>
       </Table>
     </div>

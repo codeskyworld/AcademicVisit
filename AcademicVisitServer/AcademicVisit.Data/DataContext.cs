@@ -16,5 +16,6 @@ namespace AcademicVisit.Data
 
         public DbSet<LinkInfo> LinkInfos { get; set; }
         public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<SearchInfo> SearchInfos { get; set; }
     }
 }

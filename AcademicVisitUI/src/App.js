@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import LinkManageRender from "./LinkComponent/LinkManageRender";
 import Login from "./Login";
 import UserManageRender from "./UserComponent/UserManageRender";
+import SearchManageRender from "./SearchComponent/SearchManageRender";
 import HomePage from "./HomePage";
 import SearchPage from "./SearchPage";
 
@@ -26,6 +27,11 @@ const App = () => {
             exact
             path="/linkManage"
             element={<LinkManageRender />}
+          ></Route>
+          <Route
+            exact
+            path="/searchManage"
+            element={<SearchManageRender />}
           ></Route>
           <Route exact path="/login" element={<Login />}></Route>
         </Routes>

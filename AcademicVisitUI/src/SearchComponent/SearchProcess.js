@@ -2,19 +2,19 @@ import axios from "axios";
 import moment from "moment";
 import { Alert } from "react-st-modal";
 
-const AddLink = async (linkName, linkAddress, linkType) => {
+const AddSearch = async (searchName, searchLinkAddress, searchIconAddress) => {
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
     token = "No token exists";
   }
   await axios
     .post(
-      "http://localhost:5271/Link",
+      "http://localhost:5271/Search",
       {
-        LinkName: linkName,
-        LinkAddress: linkAddress,
-        LinkType: linkType,
-        LinkUpdatingTime: new Date(),
+        SearchName: searchName,
+        SearchLinkAddress: searchLinkAddress,
+        SearchIconAddress: searchIconAddress,
+        SearchUpdatingTime: new Date(),
       },
       {
         headers: {
@@ -34,28 +34,28 @@ const AddLink = async (linkName, linkAddress, linkType) => {
             break;
           default:
             Alert(
-              "An error occurred in the AddLink! But the status is 200",
+              "An error occurred in the AddSearch! But the status is 200",
               "Warning"
             );
         }
       } else {
         Alert(
-          "An error occurred in the AddLink! And the status is not 200!",
+          "An error occurred in the AddSearch! And the status is not 200!",
           "Warning"
         );
         return;
       }
     })
-    .catch((error) => alert("Add Link error is " + error));
+    .catch((error) => alert("Add Search error is " + error));
 };
 
-const GetLinks = async (setLinkList, setFullLinkList) => {
+const GetSearches = async (setSearchList) => {
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5271/Link/GetAllId", {
+    .get("http://localhost:5271/Search/GetAllId", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -69,62 +69,30 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
         } else {
           var FormalResult = res.data.map((k) => ({
             ...k,
-            linkUpdatingTime: moment(k.linkUpdatingTime).format(
+            searchUpdatingTime: moment(k.searchUpdatingTime).format(
               "YYYY-MM-DD HH:mm:ss"
             ),
           }));
-          setLinkList(FormalResult);
-          setFullLinkList(FormalResult);
+          setSearchList(FormalResult);
         }
       } else {
         Alert(
-          "An error occurred in the GetLinks! And the status is not 200!",
+          "An error occurred in the GetSearches! And the status is not 200!",
           "Warning"
         );
         return;
       }
     })
-    .catch((error) => alert("Get Link error is " + error));
+    .catch((error) => alert("Get Search error is " + error));
 };
 
-const GetLinksOnlyForHomePage = async (setLinkList, setFullLinkList) => {
-  let token = "This is Home page";
-  await axios
-    .get("http://localhost:5271/Link/GetAllId", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-      },
-    })
-    .then((res) => {
-      if (res.status === 200) {
-        var FormalResult = res.data.map((k) => ({
-          ...k,
-          linkUpdatingTime: moment(k.linkUpdatingTime).format(
-            "YYYY-MM-DD HH:mm:ss"
-          ),
-        }));
-        setLinkList(FormalResult);
-        setFullLinkList(FormalResult);
-      } else {
-        Alert(
-          "An error occurred in the GetLinksOnlyForHomePage! And the status is not 200!",
-          "Warning"
-        );
-        return;
-      }
-    })
-    .catch((error) => alert("Get Link error is " + error));
-};
-
-const RemoveLink = async (id) => {
+const RemoveSearch = async (id) => {
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5271/Link/${id}`, {
+    .delete(`http://localhost:5271/Search/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -141,35 +109,40 @@ const RemoveLink = async (id) => {
             break;
           default:
             Alert(
-              "An error occurred in the RemoveLink! But the status is 200",
+              "An error occurred in the RemoveSearch! But the status is 200",
               "Warning"
             );
         }
       } else {
         Alert(
-          "An error occurred in the RemoveLink! And the status is not 200!",
+          "An error occurred in the RemoveSearch! And the status is not 200!",
           "Warning"
         );
         return;
       }
     })
-    .catch((error) => alert("Remove Link error is " + error));
+    .catch((error) => alert("Remove Search error is " + error));
 };
 
-const EditLink = async (linkId, linkName, linkAddress, linkType) => {
+const EditSearch = async (
+  searchId,
+  searchName,
+  searchLinkAddress,
+  searchIconAddress
+) => {
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
     token = "No token exists";
   }
   await axios
     .put(
-      "http://localhost:5271/Link",
+      "http://localhost:5271/Search",
       {
-        Id: linkId,
-        LinkName: linkName,
-        LinkAddress: linkAddress,
-        LinkType: linkType,
-        LinkUpdatingTime: new Date().toJSON(),
+        Id: searchId,
+        SearchName: searchName,
+        SearchLinkAddress: searchLinkAddress,
+        SearchIconAddress: searchIconAddress,
+        SearchUpdatingTime: new Date().toJSON(),
       },
       {
         headers: {
@@ -189,19 +162,19 @@ const EditLink = async (linkId, linkName, linkAddress, linkType) => {
             break;
           default:
             Alert(
-              "An error occurred in the EditLink! But the status is 200",
+              "An error occurred in the EditSearch! But the status is 200",
               "Warning"
             );
         }
       } else {
         Alert(
-          "An error occurred in the EditLink! And the status is not 200!",
+          "An error occurred in the EditSearch! And the status is not 200!",
           "Warning"
         );
         return;
       }
     })
-    .catch((error) => alert("Edit Link error is " + error));
+    .catch((error) => alert("Edit Search error is " + error));
 };
 
-export { AddLink, GetLinks, GetLinksOnlyForHomePage, RemoveLink, EditLink };
+export { AddSearch, GetSearches, RemoveSearch, EditSearch };

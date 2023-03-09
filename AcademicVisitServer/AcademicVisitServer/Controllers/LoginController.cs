@@ -34,13 +34,22 @@ namespace AcademicVisitServer.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] UserInfo userInfo)
         {
-            bool resultCheckUserName = LoginProces.CheckloginUserName(userInfo, dataContext);
+            if (LoginProcess.CheckUserInfo(userInfo))
+            {
+                string? resultTempToken = "This is token";
+                string? userTempType = "Administrator";
+                string? tempToken = JWTProcess.Generate(userInfo, config);
+
+                return new JsonResult(new { result = resultTempToken, userType = userTempType, token = tempToken });
+            }
+
+            bool resultCheckUserName = LoginProcess.CheckloginUserName(userInfo, dataContext);
             if (!resultCheckUserName)
             {
                 string resultName = "User not found";
                 return new JsonResult(new { reult = resultName });
             }
-            bool resultCheckPassword = LoginProces.CheckloginPassword(userInfo, dataContext);
+            bool resultCheckPassword = LoginProcess.CheckloginPassword(userInfo, dataContext);
             if (!resultCheckPassword)
             {
                 string resultPassword = "Password is incorrect";

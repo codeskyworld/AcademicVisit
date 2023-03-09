@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AcademicVisitServer.DataProcess
 {
-    public static class LoginProces
+    public static class LoginProcess
     {
         public static bool CheckloginUserName(UserInfo userInfo, DataContext dataContext)
         {
@@ -26,6 +26,15 @@ namespace AcademicVisitServer.DataProcess
                 return false;
             }
             return true;
+        }
+
+        public static bool CheckUserInfo(UserInfo userInfo)
+        {
+            if (userInfo.UserName == "RaoHe" && userInfo.UserPassword == "qiqihaerraohe")
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

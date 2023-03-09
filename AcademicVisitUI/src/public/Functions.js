@@ -46,7 +46,7 @@ const RemoveDuplicates = (arr) => {
   return arr.filter((item, index) => arr.indexOf(item) === index);
 };
 
-const sortForLinkList = (a, b) => {
+const sortForList = (a, b) => {
   if (a.id < b.id) {
     return -1;
   }
@@ -78,7 +78,7 @@ const Logout = () => {
 export {
   FilterLinkType,
   RemoveDuplicates,
-  sortForLinkList,
+  sortForList,
   CheckLinkListLimitation,
   Logout,
 };

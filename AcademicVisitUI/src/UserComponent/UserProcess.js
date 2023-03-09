@@ -28,7 +28,7 @@ const AddUser = async (userName, userPassword, userType) => {
       if (res.status === 200) {
         switch (res.data) {
           case "Need to login":
-            window.location.href = "/Login";
+            window.location.href = "/login";
             break;
           case "Token is valid":
             break;
@@ -69,7 +69,7 @@ const GetUsers = async (setUserList, setFullUserList) => {
     .then((res) => {
       if (res.status === 200) {
         if (res.data === "Need to login") {
-          window.location.href = "/Login";
+          window.location.href = "/login";
         } else {
           var FormalResult = res.data.map((k) => ({
             ...k,
@@ -108,7 +108,7 @@ const RemoveUser = async (id) => {
       if (res.status === 200) {
         switch (res.data) {
           case "Need to login":
-            window.location.href = "/Login";
+            window.location.href = "/login";
             break;
           case "Token is valid":
             break;
@@ -156,7 +156,7 @@ const EditUser = async (userId, userName, userPassword, userType) => {
       if (res.status === 200) {
         switch (res.data) {
           case "Need to login":
-            window.location.href = "/Login";
+            window.location.href = "/login";
             break;
           case "Token is valid":
             break;

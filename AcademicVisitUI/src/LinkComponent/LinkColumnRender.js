@@ -1,7 +1,7 @@
-import { sortForLinkList } from "../public/Functions";
+import { sortForList } from "../public/Functions";
 
 const LinkColumnRender = (linkList, LinkType) =>
-  linkList.sort(sortForLinkList).map((link, index) => {
+  linkList.sort(sortForList).map((link, index) => {
     if (LinkType === "NoValue") {
       return null;
     } else if (link.linkType !== LinkType) {

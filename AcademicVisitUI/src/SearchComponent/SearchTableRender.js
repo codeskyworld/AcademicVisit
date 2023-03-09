@@ -1,32 +1,32 @@
-import { RemoveLink } from "./LinkProcess";
+import { RemoveSearch } from "./SearchProcess";
 import { Confirm } from "react-st-modal";
 import { CustomDialog } from "react-st-modal";
-import { LinkDialogContent } from "./LinkDialogContent";
+import { SearchDialogContent } from "./SearchDialogContent";
 import { Button } from "reactstrap";
 import { sortForList } from "../public/Functions";
 
-const LinkTableRender = (linkList) =>
-  linkList.sort(sortForList).map((link, index) => {
+const SearchTableRender = (searchList) =>
+  searchList.sort(sortForList).map((search, index) => {
     return (
       <tr key={index}>
-        <th scope="row">{link.id}</th>
-        <td>{link.linkName}</td>
-        <td>{link.linkAddress}</td>
-        <td>{link.linkType}</td>
-        <td>{link.linkUpdatingTime}</td>
+        <th scope="row">{search.id}</th>
+        <td>{search.searchName}</td>
+        <td>{search.searchLinkAddress}</td>
+        <td>{search.searchIconAddress}</td>
+        <td>{search.searchUpdatingTime}</td>
         <td>
           <Button
             color="success"
             onClick={async () => {
               await CustomDialog(
-                <LinkDialogContent
-                  id={link.id}
-                  name={link.linkName}
-                  address={link.linkAddress}
-                  type={link.linkType}
+                <SearchDialogContent
+                  id={search.id}
+                  searchName={search.searchName}
+                  searchLinkAddress={search.searchLinkAddress}
+                  searchUpdatingTime={search.searchUpdatingTime}
                 />,
                 {
-                  title: `${link.id}`,
+                  title: `${search.id}`,
                   showCloseIcon: true,
                 }
               );
@@ -39,11 +39,11 @@ const LinkTableRender = (linkList) =>
             color="danger"
             onClick={async () => {
               const result = await Confirm(
-                `Are you sure to delete "${link.linkName}" ?`,
+                `Are you sure to delete "${search.searchName}" ?`,
                 "Warning"
               );
               if (result) {
-                RemoveLink(link.id);
+                RemoveSearch(search.id);
                 window.location.reload(true);
               } else {
                 console.log("Deleting is canceled");
@@ -57,4 +57,4 @@ const LinkTableRender = (linkList) =>
     );
   });
 
-export { LinkTableRender };
+export { SearchTableRender };
