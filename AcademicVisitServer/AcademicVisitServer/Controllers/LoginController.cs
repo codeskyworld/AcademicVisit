@@ -47,13 +47,13 @@ namespace AcademicVisitServer.Controllers
             if (!resultCheckUserName)
             {
                 string resultName = "User not found";
-                return new JsonResult(new { reult = resultName });
+                return new JsonResult(new { result = resultName });
             }
             bool resultCheckPassword = LoginProcess.CheckloginPassword(userInfo, dataContext);
             if (!resultCheckPassword)
             {
                 string resultPassword = "Password is incorrect";
-                return new JsonResult(new { retult = resultPassword });
+                return new JsonResult(new { result = resultPassword });
             }
             if (string.IsNullOrWhiteSpace(DBUserProcess.GetUserType(userInfo, dataContext)))
             {
@@ -65,7 +65,7 @@ namespace AcademicVisitServer.Controllers
             string? userType = DBUserProcess.GetUserType(userInfo, dataContext);
             string? token = JWTProcess.Generate(userInfo, config);
 
-            return new JsonResult(new { result= resultToken, userType= userType, token = token });
+            return new JsonResult(new { result = resultToken, userType = userType, token = token });
         }
     }
 }
