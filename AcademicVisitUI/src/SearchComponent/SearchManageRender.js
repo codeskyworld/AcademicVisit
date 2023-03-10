@@ -26,7 +26,7 @@ const SearchManageRender = () => {
   const AddSearchHandler = async () => {
     if (!searchName || !searchLinkAddress || !searchIconAddress) {
       Alert(
-        "Please input both search Name, search Link Address and search Icon Address",
+        "Please input Search Name, Search Link Address and Search Icon Address",
         "Warning"
       );
     } else {

@@ -11,8 +11,16 @@ const SearchTableRender = (searchList) =>
       <tr key={index}>
         <th scope="row">{search.id}</th>
         <td>{search.searchName}</td>
-        <td>{search.searchLinkAddress}</td>
-        <td>{search.searchIconAddress}</td>
+        <td>
+          {search.searchLinkAddress.length <= 50
+            ? search.searchLinkAddress
+            : search.searchLinkAddress.slice(0, 50) + "..."}
+        </td>
+        <td>
+          {search.searchIconAddress.length <= 60
+            ? search.searchIconAddress
+            : search.searchIconAddress.slice(0, 60) + "..."}
+        </td>
         <td>{search.searchUpdatingTime}</td>
         <td>
           <Button

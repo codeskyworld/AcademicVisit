@@ -11,7 +11,11 @@ const LinkTableRender = (linkList) =>
       <tr key={index}>
         <th scope="row">{link.id}</th>
         <td>{link.linkName}</td>
-        <td>{link.linkAddress}</td>
+        <td>
+          {link.linkAddress.length <= 50
+            ? link.linkAddress
+            : link.linkAddress.slice(0, 50) + "..."}
+        </td>
         <td>{link.linkType}</td>
         <td>{link.linkUpdatingTime}</td>
         <td>

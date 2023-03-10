@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { GetLinksOnlyForHomePage } from "./LinkComponent/LinkProcess";
-import { LinkColumnRender } from "./LinkComponent/LinkColumnRender";
-import { FilterLinkType } from "./public/Functions";
+import { GetSearchesOnlyForSearchPage } from "./SearchComponent/SearchProcess";
 import SearchNavRender from "./public/SearchNavRender";
-import { SearchBar } from "./public/SearchBar";
 
 const SearchPage = () => {
-  const [linkList, setLinkList] = useState([]);
-  const [fullLinkList, setFullLinkList] = useState([]);
-  const [typeClick, setTypeClick] = useState("NoValue");
+  const [searchList, setSearchList] = useState([]);
+  const [searchLinkClick, setSearchLinkClick] = useState(
+    "https://www.bing.com"
+  );
 
   useEffect(() => {
-    GetLinksOnlyForHomePage(setLinkList, setFullLinkList);
+    GetSearchesOnlyForSearchPage(setSearchList);
   }, []);
 
   return (
@@ -23,10 +21,7 @@ const SearchPage = () => {
         <div className="position-sticky pt-3 sidebar-sticky">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <button
-                className="btn btn-light mx-2"
-                onClick={() => setTypeClick("NoValue")}
-              >
+              <button className="btn btn-light mx-2">
                 <span className="align-text-bottom"></span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +36,10 @@ const SearchPage = () => {
                 &nbsp;&nbsp;SearchList
               </button>
             </li>
-            <SearchNavRender linkList={linkList} setTypeClick={setTypeClick} />
+            <SearchNavRender
+              searchList={searchList}
+              setSearchLinkClick={setSearchLinkClick}
+            />
           </ul>
         </div>
       </nav>
@@ -49,8 +47,8 @@ const SearchPage = () => {
         <iframe
           height="100%"
           width="100%"
-          src="https://www.bing.com/academic/?mkt=zh-CN"
-          title="W3Schools Free Online Web Tutorials"
+          src={searchLinkClick}
+          title="Search Link Name"
         ></iframe>
       </div>
     </div>

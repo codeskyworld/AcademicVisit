@@ -86,6 +86,36 @@ const GetSearches = async (setSearchList) => {
     .catch((error) => alert("Get Search error is " + error));
 };
 
+const GetSearchesOnlyForSearchPage = async (setSearchList) => {
+  let token = "This is Search page";
+  await axios
+    .get("http://localhost:5271/Search/GetAllId", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        var FormalResult = res.data.map((k) => ({
+          ...k,
+          searchUpdatingTime: moment(k.searchUpdatingTime).format(
+            "YYYY-MM-DD HH:mm:ss"
+          ),
+        }));
+        setSearchList(FormalResult);
+      } else {
+        Alert(
+          "An error occurred in the GetSearchesOnlyForHomePage! And the status is not 200!",
+          "Warning"
+        );
+        return;
+      }
+    })
+    .catch((error) => alert("Get Search error is " + error));
+};
+
 const RemoveSearch = async (id) => {
   let token = localStorage.getItem("token");
   if (token === null || token === "") {
@@ -177,4 +207,10 @@ const EditSearch = async (
     .catch((error) => alert("Edit Search error is " + error));
 };
 
-export { AddSearch, GetSearches, RemoveSearch, EditSearch };
+export {
+  AddSearch,
+  GetSearches,
+  RemoveSearch,
+  EditSearch,
+  GetSearchesOnlyForSearchPage,
+};

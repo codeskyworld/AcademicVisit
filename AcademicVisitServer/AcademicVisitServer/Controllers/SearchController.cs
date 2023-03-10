@@ -35,7 +35,7 @@ namespace AcademicVisitServer.Controllers
         public IActionResult GetSearches()
         {
             string? accessToken = Request.Headers["Authorization"];
-            if ((string.Compare(accessToken, "This is Home page") == 0) || JWTProcess.checkToken(accessToken, config))
+            if ((string.Compare(accessToken, "This is Search page") == 0) || JWTProcess.checkToken(accessToken, config))
             {
                 return new JsonResult(DBSearchProcess.ReadSearches(dataContext));
             }
