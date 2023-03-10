@@ -68,6 +68,17 @@ const CheckLinkListLimitation = (linkList, newlinkType) => {
   }
 };
 
+const CheckUserListIsDuplicated = (originalName, newName, nameList) => {
+  if (
+    originalName !== newName &&
+    nameList.map((name) => name.userName).includes(newName)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const Logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userType");
@@ -80,5 +91,6 @@ export {
   RemoveDuplicates,
   sortForList,
   CheckLinkListLimitation,
+  CheckUserListIsDuplicated,
   Logout,
 };

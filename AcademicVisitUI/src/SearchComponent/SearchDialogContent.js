@@ -7,9 +7,13 @@ import { Alert } from "react-st-modal";
 const SearchDialogContent = (props) => {
   const dialog = useDialog();
 
-  const [searchName, setSearchName] = useState("");
-  const [searchLinkAddress, setSearchLinkAddress] = useState("");
-  const [searchIconAddress, setSearchIconAddress] = useState("");
+  const [searchName, setSearchName] = useState(props.searchName);
+  const [searchLinkAddress, setSearchLinkAddress] = useState(
+    props.searchLinkAddress
+  );
+  const [searchIconAddress, setSearchIconAddress] = useState(
+    props.searchIconAddress
+  );
 
   return (
     <Form id="EditDialog">
@@ -19,7 +23,7 @@ const SearchDialogContent = (props) => {
             <Label for="searchName">Search Name</Label>
             <Input
               name="searchName"
-              placeholder={props.searchName}
+              value={searchName}
               type="text"
               onChange={(event) => {
                 setSearchName(event.target.value);
@@ -32,7 +36,7 @@ const SearchDialogContent = (props) => {
             <Label for="searchLinkAddress">Search Link Address</Label>
             <Input
               name="searchLinkAddress"
-              placeholder={props.searchLinkAddress}
+              value={searchLinkAddress}
               type="url"
               onChange={(event) => {
                 setSearchLinkAddress(event.target.value);
@@ -45,7 +49,7 @@ const SearchDialogContent = (props) => {
             <Label for="searchIconAddress">Search Icon Address</Label>
             <Input
               name="searchIconAddress"
-              placeholder={props.searchIconAddress}
+              value={searchIconAddress}
               type="url"
               onChange={(event) => {
                 setSearchIconAddress(event.target.value);
@@ -63,14 +67,22 @@ const SearchDialogContent = (props) => {
                   "Warning"
                 );
               } else {
-                EditSearch(
-                  props.id,
-                  searchName,
-                  searchLinkAddress,
-                  searchIconAddress
-                );
-                dialog.close();
-                window.location.reload(true);
+                if (
+                  props.searchName === searchName &&
+                  props.searchLinkAddress === searchLinkAddress &&
+                  props.searchIconAddress === searchIconAddress
+                ) {
+                  dialog.close();
+                } else {
+                  EditSearch(
+                    props.id,
+                    searchName,
+                    searchLinkAddress,
+                    searchIconAddress
+                  );
+                  dialog.close();
+                  window.location.reload(true);
+                }
               }
             }}
           >

@@ -7,9 +7,9 @@ import { Alert } from "react-st-modal";
 const LinkDialogContent = (props) => {
   const dialog = useDialog();
 
-  const [linkName, setLinkName] = useState("");
-  const [linkAddress, setLinkAddress] = useState("");
-  const [linkType, setLinkType] = useState("");
+  const [linkName, setLinkName] = useState(props.name);
+  const [linkAddress, setLinkAddress] = useState(props.address);
+  const [linkType, setLinkType] = useState(props.type);
 
   return (
     <Form id="EditDialog">
@@ -19,7 +19,7 @@ const LinkDialogContent = (props) => {
             <Label for="linkName">Link Name</Label>
             <Input
               name="linkName"
-              placeholder={props.name}
+              value={linkName}
               type="text"
               onChange={(event) => {
                 setLinkName(event.target.value);
@@ -32,7 +32,7 @@ const LinkDialogContent = (props) => {
             <Label for="linkAddress">Link Address</Label>
             <Input
               name="linkAddress"
-              placeholder={props.address}
+              value={linkAddress}
               type="url"
               onChange={(event) => {
                 setLinkAddress(event.target.value);
@@ -45,7 +45,7 @@ const LinkDialogContent = (props) => {
             <Label for="linkType">Link Type</Label>
             <Input
               name="linkType"
-              placeholder={props.type}
+              value={linkType}
               type="text"
               onChange={(event) => {
                 setLinkType(event.target.value);
@@ -63,9 +63,17 @@ const LinkDialogContent = (props) => {
                   "Warning"
                 );
               } else {
-                EditLink(props.id, linkName, linkAddress, linkType);
-                dialog.close();
-                window.location.reload(true);
+                if (
+                  linkName === props.name &&
+                  linkAddress === props.address &&
+                  linkType === props.type
+                ) {
+                  dialog.close();
+                } else {
+                  EditLink(props.id, linkName, linkAddress, linkType);
+                  dialog.close();
+                  window.location.reload(true);
+                }
               }
             }}
           >

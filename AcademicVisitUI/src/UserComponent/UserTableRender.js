@@ -20,7 +20,9 @@ const UserTableRender = (userList) =>
                 <UserDialogContent
                   id={user.id}
                   name={user.userName}
+                  password={user.userPassword}
                   type={user.userType}
+                  userList={userList}
                 />,
                 {
                   title: `${user.id}`,

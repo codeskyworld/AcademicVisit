@@ -31,6 +31,7 @@ const SearchTableRender = (searchList) =>
                   id={search.id}
                   searchName={search.searchName}
                   searchLinkAddress={search.searchLinkAddress}
+                  searchIconAddress={search.searchIconAddress}
                   searchUpdatingTime={search.searchUpdatingTime}
                 />,
                 {

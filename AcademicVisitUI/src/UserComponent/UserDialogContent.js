@@ -4,13 +4,13 @@ import { Row, Col, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { EditUser } from "./UserProcess";
 import { Alert } from "react-st-modal";
 import UserTypeDropdown from "./UserTypeDropdown";
+import { CheckUserListIsDuplicated } from "../public/Functions";
 
 const UserDialogContent = (props) => {
   const dialog = useDialog();
-
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userType, setUserType] = useState("Please Select");
+  const [userName, setUserName] = useState(props.name);
+  const [userPassword, setUserPassword] = useState(props.password);
+  const [userType, setUserType] = useState(props.type);
 
   return (
     <Form id="EditDialog">
@@ -20,7 +20,7 @@ const UserDialogContent = (props) => {
             <Label for="userName">User Name</Label>
             <Input
               name="userName"
-              placeholder={props.name}
+              value={userName}
               type="text"
               onChange={(event) => {
                 setUserName(event.target.value);
@@ -33,7 +33,7 @@ const UserDialogContent = (props) => {
             <Label for="userPassword">New PassWord</Label>
             <Input
               name="userPassword"
-              placeholder="Please input new password"
+              value={userPassword}
               type="password"
               onChange={(event) => {
                 setUserPassword(event.target.value);
@@ -57,9 +57,29 @@ const UserDialogContent = (props) => {
                   "Warning"
                 );
               } else {
-                EditUser(props.id, userName, userPassword, userType);
-                dialog.close();
-                window.location.reload(true);
+                if (
+                  props.name === userName &&
+                  props.password === userPassword &&
+                  props.type === userType
+                ) {
+                  dialog.close();
+                } else if (
+                  CheckUserListIsDuplicated(
+                    props.name,
+                    userName,
+                    props.userList
+                  )
+                ) {
+                  dialog.close();
+                  Alert(
+                    "Sorry, User Name is duplicated. Please try another one.",
+                    "Warning"
+                  );
+                } else {
+                  EditUser(props.id, userName, userPassword, userType);
+                  dialog.close();
+                  window.location.reload(true);
+                }
               }
             }}
           >
