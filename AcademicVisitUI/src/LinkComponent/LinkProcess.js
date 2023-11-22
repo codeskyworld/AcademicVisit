@@ -9,7 +9,7 @@ const AddLink = async (linkName, linkAddress, linkType) => {
   }
   await axios
     .post(
-      "http://localhost:5271/Link",
+      "http://localhost:5000/Link",
       {
         LinkName: linkName,
         LinkAddress: linkAddress,
@@ -55,7 +55,7 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5271/Link/GetAllId", {
+    .get("http://localhost:5000/Link/GetAllId", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
 const GetLinksOnlyForHomePage = async (setLinkList, setFullLinkList) => {
   let token = "This is Home page";
   await axios
-    .get("http://localhost:5271/Link/GetAllId", {
+    .get("http://localhost:5000/Link/GetAllId", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -124,7 +124,7 @@ const RemoveLink = async (id) => {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5271/Link/${id}`, {
+    .delete(`http://localhost:5000/Link/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -163,7 +163,7 @@ const EditLink = async (linkId, linkName, linkAddress, linkType) => {
   }
   await axios
     .put(
-      "http://localhost:5271/Link",
+      "http://localhost:5000/Link",
       {
         Id: linkId,
         LinkName: linkName,

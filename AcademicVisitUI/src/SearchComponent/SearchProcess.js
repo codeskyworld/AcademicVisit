@@ -9,7 +9,7 @@ const AddSearch = async (searchName, searchLinkAddress, searchIconAddress) => {
   }
   await axios
     .post(
-      "http://localhost:5271/Search",
+      "http://localhost:5000/Search",
       {
         SearchName: searchName,
         SearchLinkAddress: searchLinkAddress,
@@ -55,7 +55,7 @@ const GetSearches = async (setSearchList) => {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5271/Search/GetAllId", {
+    .get("http://localhost:5000/Search/GetAllId", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ const GetSearches = async (setSearchList) => {
 const GetSearchesOnlyForSearchPage = async (setSearchList) => {
   let token = "This is Search page";
   await axios
-    .get("http://localhost:5271/Search/GetAllId", {
+    .get("http://localhost:5000/Search/GetAllId", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const RemoveSearch = async (id) => {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5271/Search/${id}`, {
+    .delete(`http://localhost:5000/Search/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -166,7 +166,7 @@ const EditSearch = async (
   }
   await axios
     .put(
-      "http://localhost:5271/Search",
+      "http://localhost:5000/Search",
       {
         Id: searchId,
         SearchName: searchName,

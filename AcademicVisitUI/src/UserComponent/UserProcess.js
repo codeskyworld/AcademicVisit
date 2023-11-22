@@ -9,7 +9,7 @@ const AddUser = async (userName, userPassword, userType) => {
   }
   await axios
     .post(
-      "http://localhost:5271/User",
+      "http://localhost:5000/User",
       {
         UserName: userName,
         UserPassword: userPassword,
@@ -59,7 +59,7 @@ const GetUsers = async (setUserList, setFullUserList) => {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5271/User/GetAllId", {
+    .get("http://localhost:5000/User/GetAllId", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const RemoveUser = async (id) => {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5271/User/${id}`, {
+    .delete(`http://localhost:5000/User/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -136,7 +136,7 @@ const EditUser = async (userId, userName, userPassword, userType) => {
   }
   await axios
     .put(
-      "http://localhost:5271/User",
+      "http://localhost:5000/User",
       {
         Id: userId,
         UserName: userName,

@@ -3,10 +3,13 @@ WORKDIR /App
 
 # Copy everything
 COPY AcademicVisitServer.sln ./
-COPY AcademicVisit.Data/*.csproj ./AcademicVisit.Data/
 COPY AcademicVisitServer/*.csproj ./AcademicVisitServer/
+COPY AcademicVisit.Data/*.csproj ./AcademicVisit.Data/
+
 # Restore as distinct layers
 RUN dotnet restore
+# Copy everything else and build
+COPY . ./
 # Build and publish a release
 RUN dotnet publish -c Release -o out
 
