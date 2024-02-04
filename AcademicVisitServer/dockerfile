@@ -1,15 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /App
 
-# Copy everything
-COPY AcademicVisitServer.sln ./
-COPY AcademicVisitServer/*.csproj ./AcademicVisitServer/
-COPY AcademicVisit.Data/*.csproj ./AcademicVisit.Data/
+# Copy everything else and build
+COPY . ./
 
 # Restore as distinct layers
 RUN dotnet restore
-# Copy everything else and build
-COPY . ./
+
 # Build and publish a release
 RUN dotnet publish -c Release -o out
 

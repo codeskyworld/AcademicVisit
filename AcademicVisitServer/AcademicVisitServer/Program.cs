@@ -42,15 +42,14 @@ services?.AddControllers();
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseRouting();
 
-app.UseAuthentication();
+app.UseAuthentication(); 
 
 app.UseAuthorization();
 
