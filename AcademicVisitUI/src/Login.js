@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Col } from "reactstrap";
 import axios from "axios";
 import { Alert } from "react-st-modal";
+import SERVER_URL from 'Constant';
+
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -11,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     await axios
       .post(
-        "http://localhost:5000/login",
+        `${SERVER_URL}/login`,
         {
           UserName: userName,
           UserPassword: password,

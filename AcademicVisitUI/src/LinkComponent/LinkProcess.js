@@ -1,6 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { Alert } from "react-st-modal";
+import SERVER_URL from 'Constant';
 
 const AddLink = async (linkName, linkAddress, linkType) => {
   let token = localStorage.getItem("token");
@@ -9,7 +10,7 @@ const AddLink = async (linkName, linkAddress, linkType) => {
   }
   await axios
     .post(
-      "http://localhost:5000/Link",
+      `${SERVER_URL}/Link`,
       {
         LinkName: linkName,
         LinkAddress: linkAddress,
@@ -55,7 +56,7 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5000/Link/GetAllId", {
+    .get(`${SERVER_URL}/Link/GetAllId`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -90,7 +91,7 @@ const GetLinks = async (setLinkList, setFullLinkList) => {
 const GetLinksOnlyForHomePage = async (setLinkList, setFullLinkList) => {
   let token = "This is Home page";
   await axios
-    .get("http://localhost:5000/Link/GetAllId", {
+    .get(`${SERVER_URL}/Link/GetAllId`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -124,7 +125,7 @@ const RemoveLink = async (id) => {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5000/Link/${id}`, {
+    .delete(`${SERVER_URL}/Link/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -163,7 +164,7 @@ const EditLink = async (linkId, linkName, linkAddress, linkType) => {
   }
   await axios
     .put(
-      "http://localhost:5000/Link",
+      `${SERVER_URL}/Link`,
       {
         Id: linkId,
         LinkName: linkName,

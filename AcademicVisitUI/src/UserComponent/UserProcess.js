@@ -1,6 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { Alert } from "react-st-modal";
+import SERVER_URL from 'Constant';
 
 const AddUser = async (userName, userPassword, userType) => {
   let token = localStorage.getItem("token");
@@ -9,7 +10,7 @@ const AddUser = async (userName, userPassword, userType) => {
   }
   await axios
     .post(
-      "http://localhost:5000/User",
+      `${SERVER_URL}/User`,
       {
         UserName: userName,
         UserPassword: userPassword,
@@ -59,7 +60,7 @@ const GetUsers = async (setUserList, setFullUserList) => {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5000/User/GetAllId", {
+    .get(`${SERVER_URL}/User/GetAllId`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -97,7 +98,7 @@ const RemoveUser = async (id) => {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5000/User/${id}`, {
+    .delete(`${SERVER_URL}/User/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -136,7 +137,7 @@ const EditUser = async (userId, userName, userPassword, userType) => {
   }
   await axios
     .put(
-      "http://localhost:5000/User",
+      `${SERVER_URL}/User`,
       {
         Id: userId,
         UserName: userName,

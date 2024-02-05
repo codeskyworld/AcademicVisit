@@ -1,6 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { Alert } from "react-st-modal";
+import SERVER_URL from 'Constant';
 
 const AddSearch = async (searchName, searchLinkAddress, searchIconAddress) => {
   let token = localStorage.getItem("token");
@@ -9,7 +10,7 @@ const AddSearch = async (searchName, searchLinkAddress, searchIconAddress) => {
   }
   await axios
     .post(
-      "http://localhost:5000/Search",
+      `${SERVER_URL}/Search`,
       {
         SearchName: searchName,
         SearchLinkAddress: searchLinkAddress,
@@ -55,7 +56,7 @@ const GetSearches = async (setSearchList) => {
     token = "No token exists";
   }
   await axios
-    .get("http://localhost:5000/Search/GetAllId", {
+    .get(`${SERVER_URL}/Search/GetAllId`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -89,7 +90,7 @@ const GetSearches = async (setSearchList) => {
 const GetSearchesOnlyForSearchPage = async (setSearchList) => {
   let token = "This is Search page";
   await axios
-    .get("http://localhost:5000/Search/GetAllId", {
+    .get(`${SERVER_URL}/Search/GetAllId`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -122,7 +123,7 @@ const RemoveSearch = async (id) => {
     token = "No token exists";
   }
   await axios
-    .delete(`http://localhost:5000/Search/${id}`, {
+    .delete(`${SERVER_URL}/Search/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -166,7 +167,7 @@ const EditSearch = async (
   }
   await axios
     .put(
-      "http://localhost:5000/Search",
+      `${SERVER_URL}/Search`,
       {
         Id: searchId,
         SearchName: searchName,
