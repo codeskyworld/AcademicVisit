@@ -26,9 +26,10 @@ namespace AcademicVisitServer.DataProcess
 
         public static List<LinkInfo> ReadLinks(DataContext dataContext)
         {
-            var linklist = dataContext.LinkInfos.ToList();
-            dataContext.Dispose();
-            return linklist;
+            //var linklist = dataContext.LinkInfos.ToList();
+            //dataContext.Dispose();
+            //return linklist;
+            return null;
         }
 
         public static void RemoveLink(DataContext dataContext, int id)

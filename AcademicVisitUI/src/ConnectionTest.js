@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Col } from "reactstrap";
 import axios from "axios";
 import { Alert } from "react-st-modal";
-import SERVER_URL from 'Constant';
+import {SERVER_URL} from "./Constant";
 
 
-const TestConnection = () => {
+const ConnectionTest = () => {
   const [weatherForecast, setWeatherForecast] = useState({});
 
   const TestConnectionHandler = async (e) => {
@@ -42,7 +42,7 @@ const TestConnection = () => {
         </div>
         <FormGroup row>
           <Label for="userName" sm={4}>
-            Test Resut: {{weatherForecast}}
+            Test Resut:
           </Label>
         </FormGroup>
         <div className="d-grid gap-3 mt-5">
@@ -59,4 +59,4 @@ const TestConnection = () => {
   );
 };
 
-export default Login;
+export default ConnectionTest;

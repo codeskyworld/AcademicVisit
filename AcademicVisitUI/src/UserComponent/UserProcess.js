@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { Alert } from "react-st-modal";
-import SERVER_URL from 'Constant';
+import {SERVER_URL} from "../Constant";
 
 const AddUser = async (userName, userPassword, userType) => {
   let token = localStorage.getItem("token");
