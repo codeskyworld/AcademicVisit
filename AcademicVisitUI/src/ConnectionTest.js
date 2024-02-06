@@ -6,12 +6,12 @@ import {SERVER_URL} from "./Constant";
 
 
 const ConnectionTest = () => {
-  const [weatherForecast, setWeatherForecast] = useState({});
+  const [weatherForecast, setWeatherForecast] = useState("");
 
   const TestConnectionHandler = async (e) => {
     e.preventDefault();
     await axios
-    .get(`${SERVER_URL}/WeatherForecast/GetWeatherForecast`, {
+    .get(`${SERVER_URL}/WeatherForecast/GetAll`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ const ConnectionTest = () => {
     })
     .then((res) => {
       if (res.status === 200) {
-        setWeatherForecast(res.data);
+        setWeatherForecast(res.data[0].summary);
       } else {
         Alert(
           "An error occurred in the ConnectionTest! And the status is not 200!",
@@ -28,7 +28,7 @@ const ConnectionTest = () => {
         return;
       }
     })
-    .catch((error) => alert("Connection Testerror is " + error));
+    .catch((error) => alert("Connection Test error is " + error));
   };
 
   return (
@@ -42,7 +42,7 @@ const ConnectionTest = () => {
         </div>
         <FormGroup row>
           <Label for="userName" sm={4}>
-            Test Resut:
+            Test Resut: {weatherForecast}
           </Label>
         </FormGroup>
         <div className="d-grid gap-3 mt-5">
